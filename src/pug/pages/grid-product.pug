@@ -11,9 +11,8 @@ block body
                         block productDetail
                             +filter
                             .home-product
-                                .row
-                                    block product
-                                        +productGrid
+                                block product
+                                    +productGrid    
                             .home-product__pagination
-                                +pagination
-   
+                                ul.pagination__list
+                                    +pagination

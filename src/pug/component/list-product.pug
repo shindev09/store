@@ -4,12 +4,22 @@ mixin filter
             span.home-filter__label Sắp xếp theo:
             .select-input
                 .select-input__list
-                    select
-                        option(value='name') Tên sản phẩm
+                    select(onchange= 'handleChangeAZ(value)')
+                        option(value='default') Tên sản phẩm
+                        option(value='asc') Lọc từ A - Z
+                        option(value='desc') Lọc từ Z - A
                 .select-input__list
                     label(for='show') Show:
-                    select#show
+                    select#show(onchange= 'handleChangeLimit(value)')
+                        option(value='default') 5
+                        option(value='3') 3
+                        option(value='6') 6
                         option(value='9') 9
+                .select-input__list
+                    select(onchange= 'handleChangePrice(value)')
+                        option(value='default') Sắp xếp theo giá
+                        option(value='asc') Giá tăng dần
+                        option(value='desc') Giá giảm dần
         .home-filter__page
             a.home-filter__page-btn(href='./list-product.html')
                 .home-filter__page-icon
@@ -47,16 +57,17 @@ mixin listCategoryColor
                     a.category-item__link(href='#')= name
 
 mixin listCategoryPrice
-    ul.category__list
+    ul.category__list(onclick="handleChangePrice(value)")
         each item in listCategoryPrice
-            if(item == "Tìm theo mức giá")
+            -const {title, listPrices} = item
                 li.category-item__heading
                     img(src="./assets/images/icon-list-price.png" alt="icon")
-                    span= item
-            else
-                li.category-item
-                    img(src="./assets/images/icon-gray.png" alt="icon")
-                    a.category-item__link(href='#')= item
+                    span= title
+                each prices in listPrices
+                    -const {price, value} = prices
+                    li.category-item
+                        img(src="./assets/images/icon-gray.png" alt="icon")
+                        .category-item__link= price
 
 mixin listCategoryProduct
     ul.category__list
@@ -71,7 +82,5 @@ mixin listCategoryProduct
                     a.category-item__link(href='#')= item
 
 mixin productList
-    //- each listCategoryItem in listCategoryItems
-    //-     - const {img, title, rates,feedback,decription, price} = listCategoryItem
-    .col-lg-12.col-md-12.home-product-mobile#listProduct
-        +productItemDetail(img, title, rates,feedback,decription, price)
+    #productList
+    

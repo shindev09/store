@@ -1,5 +1,2 @@
 mixin productGrid
-    each listCategoryItemGrid in listCategoryItemGrids
-        - const {img, title, price, rates, feedback} = listCategoryItemGrid
-        .col-lg-4.col-md-6.home-product-mobile
-            +productItem(img, title, price, rates, feedback, "grid-product", "grid-product-img")
+    #productGrid.row
