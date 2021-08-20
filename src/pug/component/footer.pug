@@ -1,0 +1,61 @@
+mixin listNavFooter
+    ul.footer-home-nav__list
+        each item in listNavFooter
+            li.footer-home-nav__item
+                a(href="#")=item
+
+mixin footerPay
+    .col-lg-6.home-page-pay__wrap
+        h3 Thanh toán:
+        each listPay in listPays
+            a.home-page-pay__item(href="#")
+                img(src=listPay)
+
+mixin footer
+    each listMenuFooter in listMenuFooters
+        - const{title, listMenus} = listMenuFooter
+        if(title == "về chúng tôi")
+            .col-lg-3
+                .footer-menu-title
+                    img(src="../../../assets/images/icon.png")
+                    h4= title
+                +itemIcon(listMenus)
+        else if(title == "kết nối")
+            .col-lg-2
+                .footer-menu-title
+                    img(src="../../../assets/images/icon.png")
+                    h4= title
+                +itemIcon(listMenus)
+        else
+            .col-lg-2
+                .footer-menu-title
+                    img(src="../../../assets/images/icon.png")
+                    h4= title
+                +item(listMenus)
+
+mixin quickAnswer
+    .col-lg-6.home-page-pay__wrap
+        h3 Giải đáp nhanh:
+        .footer-home-answer__item
+            each quickAnswer in quickAnswers
+                - const {icon, text, phone} = quickAnswer
+                .home-page-answer__wrap
+                    .footer-home-answer__item-icon
+                        i(class=icon)
+                    .footer-home-answer__item-content
+                        span=text
+                        span=phone
+
+mixin item(listMenus)
+    ul.footer-menu__list
+        each listMenu in listMenus
+            li.footer-menu__item
+                a(href="#")= listMenu
+
+mixin itemIcon(listMenus)
+    ul.footer-menu__list
+        each listMenu in listMenus
+            - const {icon, name} = listMenu
+            li.footer-menu__item
+                i(class=icon)
+                a(href="#")= name

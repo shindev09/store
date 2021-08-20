@@ -1,0 +1,26 @@
+extends ../base/base
+
+block body
+    section.section-cart.section-page
+        .container
+            .row
+                +breakcrumb("Trang chủ", "Giỏ hàng")
+                .cart
+                    table.table.table-bordered.cart-container
+                        thead
+                            tr
+                                +titleCart
+                        tbody
+                            +cartItem
+                .cart-total-container.col-lg-12
+                    .cart-total-title
+                        span Tổng tiền:
+                        span thuế(vat):
+                        span thanh toán:
+                    .cart-total-content
+                        span 6.850.000 Đ
+                        span 6.850.000 Đ
+                        span.total 7.520.000 Đ
+                .cart-button.col-lg-12
+                    .cart-btn.cart-continue tiếp tục mua hàng
+                    .cart-btn.cart-pay thanh toán

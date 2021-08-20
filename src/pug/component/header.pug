@@ -1,0 +1,42 @@
+mixin cart()
+    each item in listCart
+        .menu__cart__item 
+            - const {img, title, amount, price} = item
+            .menu__cart__image
+                img(src=img)
+            .menu__cart__content
+                h4= title
+                .cart__item  
+                    span= amount
+                    span x
+                    span= price
+                i.fas.fa-times
+mixin menu()
+    each item in listMenu 
+        .menu__title
+            i.fas.fa-caret-right
+            a(href="#")= item   
+            if(item == "Hệ thống cửa hàng")
+                .navbar__menu-drop 
+                    +menuSystem()       
+
+mixin menuSystem()
+    each item in listSystem 
+        .menu__title
+            i.fas.fa-caret-right
+            a(href="#")= item
+
+
+mixin megaMenu()
+   each megaMenu in megaMenus
+        .col-lg-4 
+            .menu__item
+                - const { title, listItems } = megaMenu
+                .menu__title
+                    img(src="./assets/images/icon.png" alt="icon")
+                    h4= title
+                ul.navbar__menu__list
+                    each listItem in listItems
+                        li.navbar__menu__item
+                            i.fas.fa-caret-right
+                            a(href="#")= listItem

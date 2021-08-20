@@ -1,0 +1,34 @@
+extends ../base/base.pug
+
+block body
+    section.section-sign
+        .container
+            .row
+                +breakcrumb("Trang chủ", "Đăng kí")
+                .col-lg-12
+                    .sign__container
+                        form.sign__form
+                            h1.sign__form-title Thông tin cá nhân:
+                            .row
+                                .col-lg-6
+                                    +inputForm("sign__form-label", "name", "Họ và tên :", "text")
+                                .col-lg-6
+                                    +inputForm("sign__form-label", "email", "Email :", "text")
+                                .col-lg-6
+                                    +inputForm("sign__form-label", "phone", "Số điện thoại :", "text")
+                                .col-lg-6
+                                    +inputForm("sign__form-label", "address", "Địa chỉ :", "text")
+                                .col-lg-12
+                                    .sign__form-checkbox
+                                        input(type="checkbox")
+                                        span Đăng kí nhận tin tức qua email
+                            h3.sign__form-title Thông tin đăng nhập:
+                            .row
+                                .col-lg-6
+                                    +inputForm("sign__form-label", "name-sign-in", "Họ và tên :", "text")
+                                .col-lg-6
+                                    +inputForm("sign__form-label", "email-sign-in", "Email :", "text")
+                                .col-lg-6
+                                    .sign__form-button
+                                        a.sign__form-btn.btn-back(href="#") Quay lại
+                                        a.sign__form-btn.btn-agree(href="#") Đăng kí

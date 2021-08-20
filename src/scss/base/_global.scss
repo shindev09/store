@@ -1,0 +1,177 @@
+//- Home page heading
+.home-page-product__heading {
+    @include flex-center(space-between, center);
+
+    .category__heading {
+        @include flex-center(flex-start, center);
+        
+        h3 {
+            @include font(20px, bold);
+            text-transform: uppercase;
+            padding-left: 10px;
+        }
+    }
+
+    .home-filter__page {
+        @include flex-center(flex-end, center);
+        .home-filter__page-btn {
+            display: block;
+
+            .home-filter__page-icon {
+                color: $text-gray;
+                width: 40px;
+                height: 40px;
+                border: 1px solid $text-black;
+                text-align: center;
+                line-height: 40px;
+                margin: 3px;
+                &:hover {
+                    color: $text-white;
+                    background-color: $text-black;
+                }
+            }
+        }
+    }
+}
+
+//- Home product
+.home-product {
+    margin-top: 3rem;
+
+    .home-product-item {
+        padding: 14px 10px;
+        box-shadow:  0px 8px 16px 0px rgba(0,0,0,0.2);
+        cursor: pointer;
+        text-align: center;
+
+        &:hover .home-product-item__button {
+            opacity: 1;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .home-product-item__price {
+            @include font(12px, bold);
+            display: block;
+            color: $text-red;
+        }
+
+        .home-product-item__name {
+            @include font(13px, bold);
+            text-transform: uppercase;
+            color: $text-black;
+            padding: 8px 0;
+        }
+
+        .home-product-item__rating {
+            @include flex-center(center, center);
+            @include font(10px, 400);
+            padding: 8px 0;
+
+            .home-product-item__star {
+                &:not(:nth-child(5)) {
+                    color: $bg-primary;
+                }
+            }
+
+            .home-product-item__feedback {         
+                color: $text-gray;
+                padding-left: 4px;
+                font-style: italic;
+            }
+        }
+
+        .home-product-item__button {
+            opacity: 0;
+            transition: 0.5s opacity;
+            margin: 10px 0;
+
+            a {
+                text-decoration: none;
+                @include font(14px, bold);
+                color: $text-white;
+                padding: 10px 14px;
+                @include respond(desktop) {
+                    padding: 8px;
+                }
+                &:hover {
+                    opacity: 0.8;
+                }     
+            }
+
+            .home-product-item__buy {
+                background-color: $bg-primary;
+            }
+
+            .home-product-item__detail {
+                margin-left: 8px;
+                background-color: $bg-menu;
+            }
+        }
+    }
+}
+
+@include respond(mobile) {
+    .home-product-mobile:nth-child(n+2) {
+        display: none;
+    }
+}
+
+// home-filter__page
+.home-filter__page {
+    .home-filter__page-option {
+        @include flex-center(center, center);
+        @include respond(tablet) {
+            display: none;
+        }
+        margin-right: 20px;
+
+        .home-filter__page-option-item {
+            border: solid 1px $text-gray;
+            padding: 7px 14px;
+            background-color: $bg-white;
+            margin: 0 8px;
+
+            a {
+                display: block;
+                color: $text-gray;
+                text-decoration: none;
+
+                &:hover {
+                    color: $text-white;
+                }
+            }
+
+            &:hover {
+                background-color: $bg-primary;
+            }
+        }
+    }
+    
+    .home-filter__page-button {
+        @include flex-center(center, center);
+    }
+}
+
+.product-page__heading {
+    .category__heading {
+        @include flex-center(flex-start, center);
+
+        h3 {
+            @include font(14px, 400);
+            padding-left: 0;
+            color: $text-gray;
+            text-transform: capitalize;
+        }
+
+        .product-filter__page-icon {
+            padding: 0 8px;
+        }
+
+        .product-filter__page-heading {
+            color: $text-black;
+        }
+    }
+}

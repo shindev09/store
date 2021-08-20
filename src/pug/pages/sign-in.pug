@@ -1,0 +1,28 @@
+extends ../base/base.pug
+
+block body
+    section.section-sign
+        .container
+            .row
+                +breakcrumb("Trang chủ", "Đăng nhập")
+                .col-lg-12
+                    .sign__container
+                        form.sign__form
+                            .row
+                                .col-lg-6
+                                    h1.sign__form-title Thông tin đăng nhập:
+                                    +inputForm("sign__form-label", "name", "Họ và tên :", "text")
+                                    +inputForm("sign__form-label", "email", "Email :", "text")
+                                    .sign__form-check
+                                        .sign__form-checkbox
+                                            input(type="checkbox")
+                                            span Ghi nhớ đăng nhập
+                                        a.sign__form-remember(href="#") Bạn quên mật khẩu ?
+                                    .sign__form-button
+                                        a.sign__form-btn.btn-sign-in(href="#") Đăng nhập
+                                .col-lg-6
+                                    .sign__form-account
+                                        h3.sign__form-title bạn chưa có tài khoản ?
+                                        p.sign__form-text Đăng ký tài khoản để mua hàng nhanh hơn. Theo dõi đơn đặt hàng, vận chuyển. Cập nhật các tin tức sự kiện và các chương trình giảm giá của chúng tôi.
+                                        .sign__form-button
+                                            a.sign__form-btn.btn-agree.btn-sign-up(href="./sign-up.html") Đăng kí

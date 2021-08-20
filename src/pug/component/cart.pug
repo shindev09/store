@@ -1,0 +1,21 @@
+mixin cartItem
+    each item in items
+        - const {index, img, info, price, amount, total} = item
+        tr.cart-list
+            th(class="cart-item" scope='row')= index
+            td.cart-item
+                img.img-fluid.cart-item__img(src=img)
+            td.cart-item    
+                span.cart-item__title=info
+            td.cart-item
+                span.cart-item__price= price
+            td.cart-item
+                span.cart-item__amount= amount
+            td.cart-item
+                span.cart-item__total= total
+            td.cart-item
+                i.fas.fa-times
+
+mixin titleCart
+    each title in titles
+        th(class='cart-title__item' scope='col')= title

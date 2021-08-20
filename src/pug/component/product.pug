@@ -1,0 +1,12 @@
+mixin productItem(img, title, price, rates, feedback, gridProduct, gridImg)
+    .home-product-item(class=gridProduct)
+        img.img-fluid(class=gridImg src=img)
+        span.home-product-item__price= price
+        h4.home-product-item__name= title
+        .home-product-item__rating
+            .home-product-item__star
+                +rating(rates)
+            span.home-product-item__feedback= `(${feedback} đánh giá)`
+        .home-product-item__button
+            a.home-product-item__buy(href="./cart.html") Mua ngay 
+            a.home-product-item__detail(href="./detail-product.html") Xem chi tiết

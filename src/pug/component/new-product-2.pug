@@ -1,0 +1,11 @@
+mixin listCategory
+    each item in listCategory
+        li.category-item
+            img(src="./assets/images/icon.png" alt="icon")
+            a.category-item__link(href='#')= item
+
+mixin productNew2
+    each listNewItem in listNewItems
+        - const {img, title, rates,feedback,decription, price} = listNewItem
+        .col-lg-6.col-md-6.home-product-mobile
+            +productItemDetail(img, title, rates, feedback, decription, price, "listNewItem")

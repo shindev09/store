@@ -1,0 +1,63 @@
+include ../data/blog-detail-page
+include ../data/blog-page
+include ../data/brand
+include ../data/cart
+include ../data/detail-product
+include ../data/featured-product
+include ../data/footer
+include ../data/grid-product
+include ../data/header
+include ../data/hot-product
+include ../data/list-product
+include ../data/new-product
+include ../data/new-product-2
+include ../data/slide
+include ../component/rating
+include ../component/category
+include ../component/blog-detail-page
+include ../component/blog-page
+include ../component/brand
+include ../component/breakcrumb
+include ../component/cart
+include ../component/detail-product
+include ../component/featured-product
+include ../component/footer
+include ../component/grid-product
+include ../component/header
+include ../component/hot-product
+include ../component/input-group
+include ../component/list-product
+include ../component/new-product
+include ../component/new-product-2
+include ../component/pagination
+include ../component/popup
+include ../component/product
+include ../component/productItem
+include ../component/slide
+
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Shop
+  link(rel="icon" href="./assets/images/product4.png")
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  link(rel="stylesheet" href="./css/style.css")
+
+body
+    .app
+        //- header
+        include ../partials/header
+        
+        //- container
+        block body
+          
+        //- footer
+        include ../partials/footer
+
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+    script(src='./js/all.js')

@@ -1,0 +1,136 @@
+.home-product {
+    margin-top: 0;
+}
+
+.blog-page__heading {
+    border-bottom: 1px solid $text-gray;
+    padding-bottom: 35px;
+}
+
+.category__list {
+    .category-item-news__heading {
+        @include flex-center(flex-start, center);
+        padding-bottom: 14px;
+
+        span {
+            @include font(16px, bold);
+            text-transform: uppercase;
+            color: $text-black;
+            padding-left: 10px;
+        }
+    }
+
+    .category-news {
+        border-bottom: 2px solid $bg-primary;
+    }
+
+    .category-item-news {
+        border-bottom: 1px solid $text-gray;
+
+        .category-item__link {
+            @include font(14px, 500);
+            display: block;
+            color: $text-gray;
+            text-decoration: none;
+            padding: 18px 0;
+
+            &:hover {
+                color: $bg-primary;
+            }
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: $bg-menu;
+        }
+    }
+
+    .category-image-list {
+        @include flex-center(flex-start, center);
+        flex-wrap: wrap;
+
+        .category-image-news {
+            margin: 1px;
+        }
+    }
+
+    .category-tag-list {
+        @include flex-center(flex-start, center);
+        flex-wrap: wrap;
+
+        .category-item-tags {
+            margin: 8px 2px;
+
+            .category-item__link {
+                @include font(14px, 500);
+                color: $text-gray;
+                padding: 8px 12px;
+                border: 1px solid $text-gray;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: $bg-menu;
+                    color: $bg-primary;
+                }
+            }
+        }
+    }
+}
+
+.blog-page__item {
+    margin-top: 48px;
+
+    .blog-item__title {
+        @include font(18px, bold);
+        text-transform: uppercase;
+        padding: 14px 0;
+    }
+
+    .blog-item__DAM {
+        @include flex-center(flex-start, center);
+
+        .blog-item__date {
+            @include font(14px, 300);
+            color: $text-gray;
+            font-style: italic;
+        }
+
+        .blog-item__author {
+            @include font(14px, 300);
+            font-style: italic;
+            color: $text-gray;
+            padding: 0 14px;
+
+            span {
+                &:last-child {
+                    font-weight: bold;
+                    padding-left: 4px;
+                    color: $bg-primary;
+                }
+            }
+        }
+
+        .blog-item__comment {
+            @include font(14px, 300);
+            font-style: italic;
+            color: $text-gray;
+
+            span {
+                padding-left: 4px;
+            }
+        }
+    }
+
+    .blog-item__content {
+        padding: 18px 0;
+        color: $text-gray-2;
+        border-bottom: 1px solid $text-gray;
+
+        a {
+            color: $bg-primary;
+        }
+    }
+}

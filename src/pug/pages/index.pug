@@ -1,0 +1,113 @@
+extends ../base/base.pug
+
+block body
+    section.section-slide  
+        .container.container__slide
+            .row 
+                .col-lg-8.slide__image
+                    img.img-fluid(src="./assets/images/banner-bg.png", alt="banner-bg")
+                    .pagination__slide
+                        +paginationSlide
+                .col-lg-4.slide__item
+                    +listIcon
+    section.section-featured__product
+        .container
+            .row
+                .col-lg-12.home-page-product__heading  
+                    .category__heading
+                        img(src="./assets/images/icon.png" alt="icon") 
+                        h3 Sản phẩm nổi bật
+                    .home-filter__page
+                        a.home-filter__page-btn(href='#')
+                            i.home-filter__page-icon.fas.fa-caret-left
+                        a.home-filter__page-btn(href='#')
+                            i.home-filter__page-icon.fas.fa-caret-right
+                .col-lg-3
+                    nav.category
+                        ul.category-list
+                            +listCategory
+                .col-lg-9
+                    .home-product
+                        .row
+                            +productFeatured
+    section.section-new__product
+        .container
+            .row
+                .col-lg-12.home-page-product__heading  
+                    .category__heading
+                        img(src="./assets/images/icon.png" alt="icon") 
+                        h3 Sản phẩm mới
+                    .home-filter__page
+                        +optionPageNew
+                        .home-filter__page-button
+                            a.home-filter__page-btn(href='#')
+                                i.home-filter__page-icon.fas.fa-caret-left
+                            a.home-filter__page-btn(href='#')
+                                i.home-filter__page-icon.fas.fa-caret-right
+                .col-lg-12
+                    .home-product
+                        .row
+                            +productNew
+    section.section__banner.my-5
+        .container
+            .row
+                .col-lg-6.col-md-12.mt-3
+                    img.img-fluid.w-100(src="./assets/images/banner1.png" alt="banner")
+                .col-lg-6.col-md-12.mt-3
+                    img.img-fluid.w-100(src="./assets/images/banner2.png" alt="banner")
+
+    section.section-hot__product
+        .container
+            .row
+                .col-lg-12.home-page-product__heading  
+                    .category__heading
+                        img(src="./assets/images/icon.png" alt="icon") 
+                        h3 Sản phẩm bán chạy
+                    .home-filter__page
+                        +optionPageHot
+                        .home-filter__page-button
+                            a.home-filter__page-btn(href='#')
+                                i.home-filter__page-icon.fas.fa-caret-left
+                            a.home-filter__page-btn(href='#')
+                                i.home-filter__page-icon.fas.fa-caret-right
+                .col-lg-12
+                    .home-product
+                        +productHot
+    section.section__banner.my-5
+        .container
+            .row
+                .col-lg-12.col-md-12.mt-3
+                    img.img-fluid.w-100(src="./assets/images/banner3.png" alt="banner")
+    section.section-new__product-2
+        .container
+            .row
+                .col-lg-12.home-page-product__heading  
+                    .category__heading
+                        img(src="./assets/images/icon.png" alt="icon") 
+                        h3 Hàng mới về
+                    .home-filter__page
+                        a.home-filter__page-btn(href='#')
+                            i.home-filter__page-icon.fas.fa-caret-left
+                        a.home-filter__page-btn(href='#')
+                            i.home-filter__page-icon.fas.fa-caret-right
+                .col-lg-12
+                    .home-product
+                        .row
+                            +productNew2
+    section.section-brand
+        .container
+            .row
+                .col-lg-12
+                    +brand
+                    .home-page-brand__button.button-left
+                        i.fas.fa-chevron-left
+                    .home-page-brand__button.button-right
+                        i.fas.fa-chevron-right
+
+    section.section-news-letter
+        .home-page-news-letter__content
+            h3 Đăng kí để nhận tin tức khuyến mãi hàng tuần
+            form
+                input(type="text" placeholder="Nhập email của bạn...")
+                button Đăng kí
+    +popup

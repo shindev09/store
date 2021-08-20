@@ -1,0 +1,98 @@
+.section-sign {
+    margin: 3rem 0;
+
+    .sign-page__heading {
+        border-bottom: 1px solid $text-gray;
+        padding-bottom: 30px;
+        
+        .category__heading {
+            @include flex-center(flex-start, center);
+
+            h3 {
+                @include font(14px, 400);
+                padding-left: 0;
+                color: $text-gray;
+                text-transform: capitalize;
+            }
+
+            .sign-filter__page-icon {
+                padding: 0 8px;
+            }
+
+            .sign-filter__page-heading {
+                color: $text-black;
+            }
+        }
+    }
+
+    .sign__container {
+        margin: 30px 0 50px 0;
+        
+        .sign__form {
+            .sign__form-title {
+                @include font(16px, bold);
+                text-transform: uppercase;
+            }
+
+            .sign__form-label {
+                @include flex-center(flex-start, center);
+                margin-top: 30px;
+
+                .form-input--require {
+                    padding-bottom: 6px;
+
+                    &::after {
+                        content: "*";
+                        color: $text-red;
+
+                    }
+                }
+            }
+
+            input {
+                border: 1px solid $text-black;
+                width: 100%;
+                padding: 10px;
+            }
+
+            .sign__form-checkbox {
+                @include flex-center(flex-start, center);
+                padding: 20px 0;
+
+                input {
+                    width: 20px;
+                }
+
+                span {
+                    @include font(14px, 300);
+                    font-style: italic;
+                    color: $text-gray-2;
+                    padding-left: 4px;
+                }
+            }
+
+            .sign__form-button { 
+                .sign__form-btn {
+                    @include font(14px, bold);
+                    padding: 12px 30px;
+                    text-transform: uppercase;
+                    color: $text-white;
+                    text-decoration: none;
+                    
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                .btn-back {
+                    background-color: $bg-menu;
+                }
+
+                .btn-agree {
+                    background-color: $bg-primary;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

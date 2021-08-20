@@ -1,0 +1,10 @@
+mixin optionPageHot
+    ul.home-filter__page-option
+        each item in listHotOption
+            li.home-filter__page-option-item
+                a(href="#")= item
+
+mixin productHot
+    each item in listHotProduct
+        - const {img, title, price, rates, feedback} = item
+        +productItem(img, title, price, rates, feedback)

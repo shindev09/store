@@ -1,0 +1,155 @@
+footer {
+    background-color: $bg-top;
+
+    .footer-home-page {
+        padding: 30px 0;
+        border-bottom: 1px solid $text-gray;
+        
+        .footer-home-page__menu {
+            @include flex-center(space-between, flex-start);
+
+            .footer-menu-title {
+                @include flex-center(flex-start, center);
+                padding: 30px 0;
+    
+                img {
+                    padding-right: 10px;
+                }
+    
+                h4 {
+                    @include font(15px, bold);
+                    text-transform: uppercase;
+                }
+            }
+    
+            .footer-menu__list {
+                .footer-menu__item {
+                    @include flex-center(flex-start, center);
+                    
+                    a {
+                        @include font(13px, 400);
+                        display: block;
+                        color: $text-gray-2;
+                        text-decoration: none;
+                        padding: 8px;
+    
+                        &:hover {
+                            color: $bg-primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-home-pay {
+        padding: 30px 0;
+
+        .home-page-pay__wrap {
+
+            h3 {
+                @include font(16px, 400);
+                color: $text-gray-2;
+                padding: 20px 0;
+            }
+
+            .home-page-pay__item {
+                padding: 8px;
+
+                img {
+                    margin-top: 8px;
+                }
+            }
+            
+            .footer-home-answer__item {
+                @include flex-center(flex-start, center);
+                @include respond(mobile) {
+                    @include flex-center(flex-start, flex-start);
+                    flex-direction: column;
+                }
+
+                .home-page-answer__wrap {
+                    @include respond(mobile) {
+                        @include flex-center(flex-start, flex-start);
+                    }
+
+                    .footer-home-answer__item-icon {
+                        i {
+                            color: $bg-primary;
+                            border-radius: 50%;
+                            padding: 20px;
+                            border: 2px solid $bg-primary;
+                        }
+                    }
+    
+                    .footer-home-answer__item-content {
+                        padding-left: 8px;
+                        display: flex;
+                        flex-direction: column;
+    
+                        span:nth-child(1) {
+                            color: $text-gray-2;
+                        }
+    
+                        span:nth-child(2) {
+                            @include font(18px, bold);
+                            color: $text-red;
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        @include respond(mobile) {
+                            margin-top: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-home-version {
+        @include flex-center(center, center);
+        background-color: $bg-menu;
+        
+        .footer-home-version__item {
+            @include respond(mobile) {
+                text-align: center;
+            }
+            padding: 20px 0;
+
+            span {
+                color: $text-gray;
+    
+                span {
+                    color: $text-white;
+                }
+            }
+    
+            .footer-home-nav__list {
+                @include flex-center(center, center);
+                @include respond(mobile) {
+                    padding: 0 40px;
+                    flex-wrap: wrap;
+                }
+    
+                .footer-home-nav__item {
+                    @include respond(mobile) {
+                        padding: 0 8px;
+                    }
+                    padding: 0 4px;
+    
+                    a {
+                        @include font(14px, 400);
+                        color: $text-gray;
+                        text-transform: capitalize;
+                        text-decoration: none;
+
+                        &:hover{
+                            color: $bg-primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+header
+    .header__top  
+        .header__top__container.container
+            .header__top__left 
+                i.fab.fa-facebook-f.active
+                i.fab.fa-google-plus-g
+                i.fab.fa-instagram
+                i.fab.fa-twitter
+            .header__top__right  
+                a.header__sign-up(href="./sign-up.html") Đăng kí
+                a.header__sign-in(href="./sign-in.html") Đăng nhập
+    .header__top__logo.container
+        .header__logo
+            img(src="./assets/images/logo.png", alt="logo")
+        .header__hotline 
+            h4 hotline :
+            span (04) 9500 9650 - (04) 9500 8850
+        .header__order 
+            h4 đặt hàng nhanh :
+            span (04) 9500 9650 - (04) 9500 8850
+        form.header__search 
+            input(type="text" placeholder="Tìm kiếm...")
+            i.fas.fa-search
+    .header__menu
+        .container.header__navbar 
+            label.navbar(for='menu-toggle')
+                i.fas.fa-bars
+            input#menu-toggle(type='checkbox')
+            ul.navbar__list 
+                each item in listNav
+                    - const {name, url} = item
+                    li.navbar__item
+                        if(url == "./list-product.html")
+                            a(href="./list-product.html")=name
+                        else if(url == "./index.html")
+                            a(href="./index.html")=name
+                        else
+                            a(href="#")=name
+                        if(name == "trang chủ")
+                            .navbar__mega-menu.row
+                                .col-lg-8 
+                                    .row
+                                        +megaMenu()
+                                .col-lg-4.mt-5
+                                    img.navbar__image(src="./assets/images/image-nav.png" alt="images-nav")
+                        if(name == "giới thiệu")
+                            .navbar__menu
+                                +menu()
+            a.header__menu__cart(href="./cart.html")
+                label.navbar-cart(for='cart-toggle')
+                    img(src="./assets/images/cart.png" alt="cart")
+                input#cart-toggle(type='checkbox')
+                .menu__cart
+                    +cart()
+                    .menu__cart__total
+                        .cart__total__content 
+                            span tổng tiền: 
+                            span 4.560.000 Đ
+                        button thanh toán

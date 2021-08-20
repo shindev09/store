@@ -1,0 +1,38 @@
+mixin comment
+    each comment in comments
+        - const {img,name, date, content} = comment
+        .col-lg-12.col-sm-12.blog-detail-comment__item
+            img.img-fluid(src=img)
+            .comment-content
+                span= name
+                .comment-content-date
+                    span= date
+                    span Trả lời
+                p=content
+
+mixin tags
+    each tag in tagBlogs
+        span= `${tag},`
+
+mixin blogDetail
+    each blogDetailItem in blogDetailItems
+        - const {img, title, date, author, comment, content, img2, content2, img3, content3} = blogDetailItem
+        .blog-page__item
+            img.img-fluid(src=img)
+            h3.blog-item__title= title
+            .blog-item__DAM
+                span.blog-item__date= date
+                .blog-item__author
+                    i.fas.fa-user
+                    span Đăng bởi
+                    span= author
+                .blog-item__comment
+                    i.fas.fa-comments
+                    span= `${comment} Bình luận`
+            p.blog-detail= content
+            .img-blog-detail
+                img.img-fluid.img-detail(src=img2)
+            p.blog-detail= content2
+            .img-blog-detail
+                img.img-fluid.img-detail(src=img3)
+            p.blog-detail= content3

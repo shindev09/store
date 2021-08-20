@@ -1,0 +1,42 @@
+extends ../base/base
+
+block body
+    .section-page
+        .container
+            .row
+                +breakcrumb("Trang chủ", "Tin tức")
+                +category
+                    block blogCategory
+                        +listNews
+                        +listImages
+                        +listTag
+                .col-lg-9  
+                    .home-product
+                        .row
+                            +blogDetail
+                            .blog-detail-link
+                                .blog-detail-link__tags
+                                    h3 tags:
+                                    +tags
+                                .blog-detail-link__share
+                                    h3 chia sẻ:
+                                    i.fab.fa-facebook-f
+                                    i.fab.fa-google-plus-g
+                                    i.fab.fa-twitter
+                                    i.fab.fa-instagram
+                            .blog-detail-comment
+                                h3 Bình luận: 
+                                +comment
+                            .section-sign
+                                .sign__container
+                                    form.sign__form
+                                        h1.sign__form-title Viết bình luận của bạn:
+                                        .row
+                                            .col-lg-6
+                                                +inputForm("sign__form-label", "name", "Họ và tên :", "text")
+                                            .col-lg-6
+                                                +inputForm("sign__form-label", "email", "Email :", "text")
+                                            .col-lg-12
+                                                +inputForm("sign__form-label", "comment", "Bình luận :", "text")
+                                                .sign__form-button
+                                                    a.sign__form-btn.btn-agree.btn-send(href="#") Gửi bình luận

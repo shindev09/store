@@ -1,0 +1,14 @@
+mixin paginationSlide
+    .pagination__item
+    .pagination__item
+    .pagination__item
+
+mixin listIcon
+    each item in listItem
+        - const {icon, title, content} = item
+        .slide__wrap
+            .slide__icon
+                i(class=icon)
+            .slide__content
+                h4= title
+                p= content

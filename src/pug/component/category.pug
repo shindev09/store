@@ -1,0 +1,9 @@
+mixin category
+    .col-lg-3.product-page__list
+        nav.category
+            .category-list
+                +listCategoryProduct
+                block blogCategory
+                    +listCategoryPrice
+                    +listCategoryColor
+                    +listCategoryPromotion

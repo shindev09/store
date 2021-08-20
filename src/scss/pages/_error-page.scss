@@ -1,0 +1,48 @@
+.section-error {
+    @include flex-center(center, center);
+    margin: 50px 0;
+
+    .error-content {
+        text-align: center;
+
+        h1 {
+            @include font(70px, bold);
+            text-transform: uppercase;
+            color: $bg-primary;
+        }
+
+        h3 {
+            @include font(18px, 500);
+            text-transform: capitalize;
+            display: block;
+            color: $text-black;
+            font-weight: bold;
+
+            &:nth-child(3) {
+                margin-bottom: 20px;
+            }
+        }
+
+        .error-btn {
+            padding: 10px 20px;
+            color: $text-white;
+            font-weight: bold;
+            background-color: $bg-menu;
+            text-decoration: none;
+            margin-top: 20px;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    img {
+        @include respond(tablet) {
+            display: none;
+        }
+        @include respond(mobile) {
+            display: none;
+        }
+    }
+}

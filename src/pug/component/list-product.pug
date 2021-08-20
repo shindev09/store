@@ -1,0 +1,77 @@
+mixin filter
+    .home-filter
+        .home-filter__sort
+            span.home-filter__label Sắp xếp theo:
+            .select-input
+                .select-input__list
+                    select
+                        option(value='name') Tên sản phẩm
+                .select-input__list
+                    label(for='show') Show:
+                    select#show
+                        option(value='9') 9
+        .home-filter__page
+            a.home-filter__page-btn(href='./list-product.html')
+                .home-filter__page-icon
+                    img(src="./assets/images/icon-list-product.png")
+            a.home-filter__page-btn(href='./grid-product.html')
+                .home-filter__page-icon
+                    img(src="./assets/images/icon-list-filter.png")
+
+mixin listCategoryPromotion
+    ul.category__list
+        each listCategoryPromotion in listCategoryPromotions
+            - const {title, listItem} = listCategoryPromotion
+            li.category-item__heading
+                img(src="./assets/images/icon-list-promotion.png" alt="icon")
+                span= title
+            each item in listItem
+                - const {img, title, price} = item
+                a.home-product-item(href="#")
+                    img.img-fluid(src=img)
+                    .home-product-item__content
+                        h4.home-product-item__name= title
+                        span.home-product-item__price= price
+
+mixin listCategoryColor
+    ul.category__list
+        each listCategoryColor in listCategoryColors
+            - const {icon, name} = listCategoryColor
+            if(name == "Tìm theo màu sắc")
+                li.category-item__heading
+                    img(src="./assets/images/icon-list-color.png" alt="icon")
+                    span= name
+            else
+                li.category-item
+                    img(src=icon alt="icon")
+                    a.category-item__link(href='#')= name
+
+mixin listCategoryPrice
+    ul.category__list
+        each item in listCategoryPrice
+            if(item == "Tìm theo mức giá")
+                li.category-item__heading
+                    img(src="./assets/images/icon-list-price.png" alt="icon")
+                    span= item
+            else
+                li.category-item
+                    img(src="./assets/images/icon-gray.png" alt="icon")
+                    a.category-item__link(href='#')= item
+
+mixin listCategoryProduct
+    ul.category__list
+        each item in listCategoryProduct
+            if(item == "Danh mục sản phẩm")
+                li.category-item__heading
+                    img(src="./assets/images/icon-list-product.png" alt="icon")
+                    span= item
+            else
+                li.category-item
+                    img(src="./assets/images/icon-gray.png" alt="icon")
+                    a.category-item__link(href='#')= item
+
+mixin productList
+    //- each listCategoryItem in listCategoryItems
+    //-     - const {img, title, rates,feedback,decription, price} = listCategoryItem
+    .col-lg-12.col-md-12.home-product-mobile#listProduct
+        +productItemDetail(img, title, rates,feedback,decription, price)

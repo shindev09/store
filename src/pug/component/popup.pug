@@ -1,0 +1,22 @@
+mixin popup
+    .btn-news
+        button(type='button' data-toggle='modal' data-target='#exampleModal')
+            .popup
+            i.far.fa-newspaper
+
+    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#exampleModalLabel.modal-title Đăng kí nhận tin tức của chúng tôi
+                    span Bạn muốn nhanh chóng nhận các tin tức khuyến mại và ưu đãi lớn của chúng tôi hàng tuần ?
+                    span Hãy đăng kí theo form dưới đây
+                    .btn-close
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                .modal-body
+                    input(type="text" placeholder="Nhập email của bạn vào đây...")
+                    .btn.btn-register đăng kí
+                    .modal-checkbox
+                        input(type="checkbox")
+                        span Không hiện lại thông báo này

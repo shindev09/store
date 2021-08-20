@@ -1,0 +1,5 @@
+mixin inputForm(className, name, label, type)
+    div(class=className)
+        label(for=name)=label
+        .form-input--require
+    input(type=type id=name name=name)

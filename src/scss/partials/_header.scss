@@ -1,0 +1,574 @@
+.header__top {
+    border-bottom: 2px solid $text-gray;
+    background-color: $bg-top;
+
+    .header__top__container {
+        @include flex-center(space-between, center);
+
+        .header__top__left {
+            i {
+                padding: 17px;
+                @include respond(mobile) {
+                    display: none;
+                }
+                &:hover {
+                    color: $text-white;
+                    background-color: $bg-primary;
+                    cursor: pointer;
+                }
+            }
+
+            i + i {
+                border-right: 1px solid $text-gray;
+            }
+
+            i.active {
+                background-color: $bg-primary;
+                color: $text-white;
+            }
+        }
+
+        .header__top__right {
+            @include respond(mobile) {
+                width: 100%;
+                @include flex-center(center, center)
+            }
+
+            a {
+               @include font(12px, bold);
+               @include respond(mobile) {
+                    border-right: none;
+                    padding-left: 40px;
+                }
+                border-right: 1px solid $text-gray;
+                padding: 17px;
+                text-transform: uppercase;
+                color: $text-black;
+
+                &:hover {
+                    color: $text-white;
+                    background-color: $bg-primary;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+            }
+
+            a:nth-child(1) {
+                border-left: 1px solid $text-gray;
+                @include respond(mobile) {
+                    border-left: none;
+                    border-right: 1px solid $text-gray;
+                    padding-right: 50px;
+                }
+            }
+        }   
+    }
+}
+
+.header__top__logo {
+    @include flex-center(space-between, center);
+    @include respond(mobile) {
+        flex-direction: column;
+    }
+    @include respond(tablet) {
+        flex-direction: column;
+    }
+    padding: 17px;
+
+    .header__hotline {
+        @include respond(mobile) {
+            display: none;
+        }
+        @include respond(tablet) {
+            display: none;
+        }
+
+        h4 {
+            @include font(16px, bold);
+            color: $bg-primary;
+            text-transform: uppercase;
+        }
+
+        span {
+            @include font(14px, 300);
+            color: $text-gray;
+        }
+    }
+
+    .header__order {
+        @extend .header__hotline;
+        @include respond(mobile) {
+            display: none;
+        }
+        @include respond(tablet) {
+            display: none;
+        }
+    }
+
+    .header__search {
+        @include respond(mobile) {
+            margin-top: 15px;
+            width: 100%;
+        }
+        @include respond(tablet) {
+            margin-top: 15px;
+            width: 100%;
+        }
+        position: relative;
+        width: 30%;
+
+        input {
+            padding: 10px 20px; 
+            border-radius: 20px;
+            border: 1px solid $text-gray;
+            width: 100%;
+            outline: none;
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translate(-50%, -50%);
+            color: $text-gray;
+        }
+    }
+}
+
+.header__menu {
+    background-color: $bg-menu;
+
+    .header__navbar {
+        @include flex-center(space-between, center);
+        .navbar,
+        .navbar-cart {
+            @include respond(mobile) {
+                display: block;
+            }
+            @include respond(tablet) {
+                display: block;
+            }
+            position: relative;
+            display: none;
+            color: $text-white;
+        }
+
+        .navbar {
+            @include respond(mobile) {
+                border-right: 1px solid $text-gray;
+                padding: 30px;
+                margin: 0;
+                font-size: 24px;
+            }
+            @include respond(tablet) {
+                border-right: 1px solid $text-gray;
+                padding: 22px;
+                margin: 0;
+                font-size: 24px;
+            }
+        }
+
+        .navbar-cart {
+            @include respond(big-desktop) {
+                display: block;
+            }
+        }
+
+        #menu-toggle,
+        #cart-toggle {
+            display: none;
+        }
+
+        .navbar__list {
+            @include flex-center(flex-start, center);
+            @include respond(mobile) {
+                display: none;
+                position: absolute;
+                top: 55%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: $bg-menu;
+                z-index: 10;
+            }
+            @include respond(tablet) {
+                display: none;
+                position: absolute;
+                top: 55%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: $bg-menu;
+                z-index: 10;
+            }
+
+            .navbar__item a {
+                @include font(14px, bold);
+                @include respond(mobile) {
+                    width: 100vw;
+                }
+                @include respond(tablet) {
+                    width: 100vw;
+                }
+                @include respond(desktop)  {
+                    font-size: 12px;
+                    padding: 39px 30px;
+                }
+                display: block;
+                text-transform: uppercase;
+                color: $text-white;
+                padding: 32px 30px;
+                text-decoration: none;
+                &:hover {
+                    background-color: $bg-primary;
+                }
+            }
+
+            .navbar__item {
+                position: relative;
+
+                .navbar__mega-menu {
+                    @include respond(mobile) {
+                        position: static;
+                        width: 100vw;
+                        margin: 0;
+                        height: 400px;
+                        overflow-y: auto;
+                        z-index: 10;
+                    }
+                    @include respond(tablet) {
+                        position: static;
+                        width: 100vw;
+                        margin: 0;
+                        height: 400px;
+                        overflow-y: auto;
+                        z-index: 10;
+                    }
+                    @include respond(desktop) {
+                        width: calc(91vw - 3px);
+                    }
+                    display: none;
+                    position: absolute;
+                    background-color: $bg-top;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    left: 15px;
+                    width: calc(81vw + 3px);
+                    padding: 20px;
+                    z-index: 10;
+
+                    .menu__item {
+                        .menu__title {
+                            @include flex-center(flex-start, center);
+                            padding: 10px 0;
+
+                            h4 {
+                                @include font(14px, bold);
+                                color: $text-black;
+                                text-transform: uppercase;
+                                padding-left: 6px;
+                            }
+                        }
+                        .navbar__menu__list {
+                            @include font(12px, 400);
+
+                            .navbar__menu__item {
+                                @include flex-center(flex-start, center);
+                                color: $text-gray;
+
+                                a {
+                                    @include font(14px, 400);
+                                    text-decoration: none;  
+                                    text-transform: initial;
+                                    color: $text-gray;
+                                    padding: 8px 14px;
+                                    &:hover {
+                                        background-color: $bg-top;
+                                        color: $bg-primary;
+                                    }
+                                }
+                            }
+                        }
+                        &:nth-child(2n+1) {
+                            margin-top: 20px;
+                        }
+                    }
+
+                    .navbar__image {
+                        max-width: 100%;
+                        height: 100%;
+                    }
+                }  
+
+                .navbar__menu {
+                    @include respond(mobile) {
+                        position: static;
+                        width: 100vw;
+                        z-index: 10;
+                    }
+                    @include respond(tablet) {
+                        position: static;
+                        width: 100vw;
+                        z-index: 10;
+                    }
+                    display: none;
+                    position: absolute;
+                    left: 0;
+                    background-color: $bg-top;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    width: 15vw;
+                    z-index: 10;
+                    .menu__title {
+                        @include flex-center(flex-start, center);
+                        padding: 14px;
+
+                        &:hover {
+                            background-color: $bg-primary;
+                            color: $text-white;
+                            cursor: pointer;
+                        }
+
+                        &:hover > a,
+                        &:hover > i {
+                            color: $text-white;
+                        }
+
+                        a {
+                            @include font(14px, 500);
+                            text-transform: capitalize;
+                            text-decoration: none;
+                            color: $text-black;
+                            margin-left: 8px;
+                            padding: 10px 0;
+                        }  
+
+                        &:hover .navbar__menu-drop {
+                            display: block;
+                        }    
+                    }
+
+                    .navbar__menu-drop  {
+                        @include respond(mobile) {
+                            position: static;
+                            width: 50vw;
+                            margin-left: 20px;
+                        }
+                        @include respond(tablet) {
+                            position: static;
+                            width: 50vw;
+                            margin-left: 20px;
+                        }
+                        position: absolute;
+                        left: 100%;
+                        top: 25%;
+                        background-color: $bg-top;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        width: 15vw;
+                        display: none;
+                        i {
+                            color: $text-black;
+                        }
+                        .menu-title {
+                            &:hover {
+                                color: $text-white;
+                            }
+                        }
+                    }
+                }
+
+                &:hover .navbar__menu {
+                    display: block;
+                }
+
+                &:hover .navbar__mega-menu {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+            }
+
+            .navbar__item:nth-child(1) {
+                @include respond(mobile) {
+                    background-color: transparent;
+                }
+                @include respond(tablet) {
+                    background-color: transparent;
+                }
+                background-color: $bg-primary;
+            }
+
+            .navbar__item + .navbar__item {
+                @include respond(mobile) {
+                    border-right: none;
+                }
+                @include respond(tablet) {
+                    border-right: none;
+                }
+                border-right: 1px solid $text-gray;
+            }
+        }
+        
+        @include respond(mobile) {
+            #menu-toggle:checked + .navbar__list  {
+                display: flex;
+            }
+        }
+        @include respond(tablet) {
+            #menu-toggle:checked + .navbar__list  {
+                display: flex;
+            }
+        }
+
+        .header__menu__cart {
+            @include respond(mobile) {
+                border-right: none;
+            }
+            @include respond(tablet) {
+                border-right: none;
+            }
+            position: relative; 
+            border-left: 1px solid $text-gray; 
+            border-right: 1px solid $text-gray;
+            padding: 24px 30px;
+            display: block;
+            text-decoration: none;
+            color: $text-white;
+            z-index: 10;
+
+            &:hover .menu__cart {
+                display: block;
+            }
+
+            &:before {
+                content: "0";
+                position: absolute;
+                top: 35%;
+                right: 10%;
+                transform: translate(-50%, -50%);
+                background-color: $bg-primary;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                color: $text-white;
+                text-align: center;
+                line-height: 20px;
+                font-weight: bold;
+            }
+
+            .menu__cart {
+                @include respond(mobile) {
+                    width: 100vw;
+                    right: -15px;
+                }
+                @include respond(tablet) {
+                    width: 100vw;
+                    right: -15px;
+                    padding: 24px;
+                }
+                @include respond(desktop) {
+                    width: 27vw;
+                }
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: $bg-top;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                width: 20vw;
+                cursor: default;
+
+                .menu__cart__item {
+                    @include flex-center(flex-start, center);
+                    padding: 20px;
+                    border-bottom: 1px solid $text-gray;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $bg-white;
+                    }
+
+                    .menu__cart__content {
+                        margin-left: 10px;
+                        position: relative;
+
+                        h4 {
+                            @include font(14px, bold);
+                            color: $text-black;
+                        }
+
+                        .cart__item {
+                            span {
+                                @include font(12px, 700);
+                                color: $text-gray;
+                                &:nth-child(3) {
+                                    color: $text-red;
+                                }
+                            }
+                        }
+
+                        i {
+                            @include respond(tablet) {
+                                top: -20px;
+                                right: -50px;
+                            }
+                            @include respond(mobile) {
+                                top: -5px;
+                                right: -20px;
+                            }
+                            position: absolute;
+                            top: -2px;
+                            right: -10px;
+                            border-radius: 50%;
+                            border: 1px solid $text-gray;
+                            color: $text-gray;
+                            padding: 5px;
+                            font-size: 10px;
+                        }
+                    }
+                }
+
+                .menu__cart__total {
+                    padding: 20px;
+
+                    .cart__total__content {
+                        @include flex-center(flex-end, center);
+                        span {
+                            text-transform: uppercase;
+                            color: $text-black;
+
+                            &:nth-child(2) {
+                                @include font(14px, bold);
+                                color: $text-red;
+                                margin-left: 4px;
+                            }
+                        }
+                    }
+
+                    button {
+                        @include font(14px, bold);
+                        background-color: $bg-primary;
+                        text-transform: uppercase;
+                        padding: 10px 8px;
+                        float: right;
+                        margin: 10px 0 20px 0;
+                        color: $text-white;
+                        cursor: pointer;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+
+            @include respond(mobile) {
+                #cart-toggle:checked + .menu__cart {
+                    display: none;
+                }
+            }
+            
+            @include respond(tablet) {
+                #cart-toggle:checked + .menu__cart {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.sign__form-text {
+    @include font(14px, 300);
+    color: $text-gray;
+    padding: 30px 0; 
+}
+
+.sign__form-button {
+    margin: 30px 0 !important;
+
+    .btn-sign-up {
+        margin: 0 !important;
+    }
+    
+    .btn-sign-in {
+        background-color: $bg-menu;  
+    }
+}
+
+
+.sign__form-check {
+    @include flex-center(space-between, center);
+
+    .sign__form-remember {
+        color: $bg-primary;
+        text-decoration: underline;
+        font-style: italic;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

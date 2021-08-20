@@ -1,0 +1,66 @@
+extends ../base/base
+
+block body
+    section.section-page
+        .container
+            .row
+                +breakcrumb("Trang chủ", "Sản phẩm")
+        .container.section-detail-product
+            .row.product-info
+                .col-lg-5.product-info__item-images
+                    .product-info__item-img--big
+                        img#img-main(src="./assets/images/product11.png" alt='img')
+                    +imagesDetail
+                .col-lg-7.product-info__item-content
+                    h1.product-info__item__title Máy khoan cnc 3d
+                    .product-info__item__rating
+                        .product-info__item__star
+                            +rating(rates)
+                        span.product-info__item__feedback (12 đánh giá)
+                        a.product-info__item__comment(href="#") Gửi bình luận của bạn
+                    span.product-info__item__price GNY: 2.350.000 Đ
+                    span.product-info__item__text Thông tin sản phẩm: 
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit hic rem corrupti deleniti velit totam tempore pariatur ipsam distinctio necessitatibus cumque mollitia, tempora atque, illo cum alias ea qui.
+                    .product-info__item__option
+                        .select-input-option
+                            label.option-size Size:
+                            select
+                                option --Chọn size--
+                                option 20
+                                option 30
+                        .select-input-option
+                            label.option-color Màu sắc:
+                            select
+                                option --Chọn màu--
+                                option Màu xanh
+                                option Màu đỏ
+                    .product-info__item__button
+                        .product-info__item__num
+                            input(type="number" value="1")
+                        a.product-info__item__buy(href="./cart.html") Mua ngay
+                    img.product-info__item__interact(src="./assets/images/interact.png" alt="interact")
+            .row.product-content
+                .col-lg-12
+                    .product-content-wrapper
+                        .product-content-title
+                            h3.product-content-title__item.active Thông tin sản phẩm
+                            h3.product-content-title__item đánh giá - nhận xét
+                            h3.product-content-title__item thẻ tags
+                        .product-content-text
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum velit laboriosam ipsum, in neque dolor eligendi veniam voluptas voluptate atque enim explicabo sapiente possimus facere eveniet sed iure temporibus aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum velit laboriosam ipsum, in neque dolor eligendi veniam voluptas voluptate atque enim explicabo sapiente possimus facere eveniet sed iure temporibus aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum velit laboriosam ipsum, in neque dolor eligendi veniam voluptas voluptate atque enim explicabo sapiente possimus facere eveniet sed iure temporibus aspernatur.
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum velit laboriosam ipsum, in neque dolor eligendi veniam voluptas voluptate atque enim explicabo sapiente possimus facere eveniet sed iure temporibus aspernatur.
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum velit laboriosam ipsum, in neque dolor eligendi veniam voluptas voluptate atque enim explicabo sapiente possimus facere eveniet sed iure temporibus aspernatur.
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum velit laboriosam ipsum, in neque dolor eligendi veniam voluptas voluptate atque enim explicabo sapiente possimus facere eveniet sed iure temporibus aspernatur.
+                .col-lg-12.product-same
+                    .col-lg-12.home-page-product__heading  
+                            .category__heading
+                                img(src="./assets/images/icon.png" alt="icon") 
+                                h3 Sản phẩm tương tự
+                            .home-filter__page
+                                a.home-filter__page-btn(href='#')
+                                    i.home-filter__page-icon.fas.fa-caret-left
+                                a.home-filter__page-btn(href='#')
+                                    i.home-filter__page-icon.fas.fa-caret-right
+                    .col-lg-12.mt-5
+                        .row
+                            +productSame

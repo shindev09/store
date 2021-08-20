@@ -1,0 +1,19 @@
+extends ../base/base
+
+block body
+    section.section-page
+        .container
+            .row
+                +breakcrumb("Trang chủ", "Danh mục sản phẩm")
+                +category
+                block blog
+                    .col-lg-9
+                        block productDetail
+                            +filter
+                            .home-product
+                                .row
+                                    block product
+                                        +productGrid
+                            .home-product__pagination
+                                +pagination
+   

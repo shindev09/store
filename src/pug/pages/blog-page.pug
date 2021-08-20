@@ -1,0 +1,18 @@
+extends ../base/base
+
+block body
+    section.section-page
+        .container
+            .row
+                +breakcrumb("Trang chủ", "Tin tức")
+                +category
+                    block blogCategory
+                        +listNews
+                        +listImages
+                        +listTag
+                .col-lg-9  
+                    .home-product
+                        .row
+                            +blog
+                    .home-product__pagination
+                        +pagination
