@@ -215,3 +215,30 @@
         }
     }
 }
+
+.category-item__heading {
+    @include flex-center(flex-start, center);
+    padding: 27px 14px;
+    background-color: $bg-menu;
+
+    span {
+        margin-left: 8px;
+        color: $bg-primary;
+        text-transform: uppercase;
+        cursor: default;
+    }
+}
+
+.category-item {
+    cursor: pointer;
+
+    &:hover > .category-item__link {
+        color: $bg-primary !important;
+        background-color: $bg-menu !important;
+    }
+}
+
+.category-item.active {
+    color: $bg-primary !important;
+    background-color: $bg-menu !important;
+}

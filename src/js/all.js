@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
         headers: { "Content-Type": "application/json" },
         success: function (data, status, res) {
             renderPagination(data, filter);
+            renderCategoryProduct(data);
         },
     });
 })();
@@ -24,7 +25,6 @@ function getProductLimit(params) {
         data: params,
         success: function (data, status, res) {
             renderProduct(data);
-            // cartNumber(data);
         },
         error: function (err) {
             console.log(err);
@@ -75,3 +75,42 @@ function renderProduct(data) {
     $("#productList").html(product_list);
     $("#productGrid").html(product_grid);
 }
+
+// ------------------ categories -----------------//
+
+function renderCategoryProduct(data) {
+    let listcategory = new Set(
+        data.map((item) => {
+            return item.category;
+        })
+    );
+    let categories = [...listcategory];
+    let newCategories = categories.map((category) => {
+        return `<li class="category-item category-product__item"><img src="./assets/images/icon-gray.png" alt="icon")><a class="category-item__link category-product__item-link">${category}</a></li>`;
+    });
+
+    $(".category-product__list").html(newCategories);
+
+    let categoryLink = document.querySelectorAll(".category-product__item");
+    categoryLink.forEach((item) => {
+        item.onclick = () => {
+            filter = { ...filter, category: item.innerText };
+            getProductLimit(filter);
+        };
+    });
+}
+
+//----filter range price --------//
+
+handleRangePrice = () => {
+    let categoryLink = document.querySelectorAll(".category-price__item");
+    categoryLink.forEach((item) => {
+        item.onclick = () => {
+            filter = {
+                ...filter,
+                price_lte: item.innerText,
+            };
+            getProductLimit(filter);
+        };
+    });
+};

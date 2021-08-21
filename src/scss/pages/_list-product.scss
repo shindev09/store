@@ -9,19 +9,8 @@
                 box-shadow: none;
 
                 .category__list {
-                    margin: 20px 0;
-
-                    .category-item__heading {
-                        @include flex-center(flex-start, center);
-                        padding: 27px 14px;
-                        background-color: $bg-menu;
-
-                        span {
-                            margin-left: 8px;
-                            color: $bg-primary;
-                            text-transform: uppercase;
-                            cursor: default;
-                        }
+                    &:nth-of-type(2n) {
+                        margin: 20px 0;
                     }
 
                     .category-item {

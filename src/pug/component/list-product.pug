@@ -57,7 +57,7 @@ mixin listCategoryColor
                     a.category-item__link(href='#')= name
 
 mixin listCategoryPrice
-    ul.category__list(onclick="handleChangePrice(value)")
+    ul.category__list.category-price__list
         each item in listCategoryPrice
             -const {title, listPrices} = item
                 li.category-item__heading
@@ -65,21 +65,15 @@ mixin listCategoryPrice
                     span= title
                 each prices in listPrices
                     -const {price, value} = prices
-                    li.category-item
+                    li.category-item.category-price__item(onclick="handleRangePrice()")
                         img(src="./assets/images/icon-gray.png" alt="icon")
-                        .category-item__link= price
+                        .category-item__link(value=price)= price
 
 mixin listCategoryProduct
-    ul.category__list
-        each item in listCategoryProduct
-            if(item == "Danh mục sản phẩm")
-                li.category-item__heading
-                    img(src="./assets/images/icon-list-product.png" alt="icon")
-                    span= item
-            else
-                li.category-item
-                    img(src="./assets/images/icon-gray.png" alt="icon")
-                    a.category-item__link(href='#')= item
+    .category-item__heading
+        img(src="./assets/images/icon-list-product.png" alt="icon")
+        span Danh mục sản phẩm
+    ul.category__list.category-product__list
 
 mixin productList
     #productList
