@@ -58,6 +58,7 @@ function renderPagination(data, params) {
         };
     });
 
+    //- button previous pagination -//
     handleBtnPrevious = (value) => {
         parseInt(value) > 1 ? (btnPrev.value = value - 1) : "";
         paginationItem.forEach((item) => {
@@ -75,6 +76,7 @@ function renderPagination(data, params) {
         }
     };
 
+    //- button next pagination -//
     handleBtnNext = (value) => {
         parseInt(value) < totalPages ? (btnNext.value = value + 1) : "";
         paginationItem.forEach((item) => {
@@ -90,6 +92,8 @@ function renderPagination(data, params) {
             btnPrev.value = value - 1;
         }
     };
+
+    //-- filter sort name product from A to Z -- //
 
     handleChangeAZ = (value) => {
         switch (value) {
@@ -108,6 +112,7 @@ function renderPagination(data, params) {
         }
     };
 
+    //- filter show product -//
     handleChangeLimit = (value) => {
         switch (value) {
             case "3":
@@ -130,6 +135,7 @@ function renderPagination(data, params) {
         }
     };
 
+    //- filter show price incre/decre -//
     handleChangePrice = (value) => {
         switch (value) {
             case "asc":

@@ -14,6 +14,8 @@ window.addEventListener("DOMContentLoaded", () => {
         success: function (data, status, res) {
             renderPagination(data, filter);
             renderCategoryProduct(data);
+            handleRangePrice(data);
+            onLoadCart();
         },
     });
 })();
@@ -32,6 +34,8 @@ function getProductLimit(params) {
     });
 }
 
+//--------- render product -------------------//
+
 function renderProduct(data) {
     let product_list = data.map((product, index) => {
         return `
@@ -46,7 +50,7 @@ function renderProduct(data) {
                         <p>${product.decription}</p>
                         <span class="home-product-item__price">${product.price}</span>
                         <div class="home-product-item__button">
-                            <a class="home-product-item__buy" href="./cart.html">Mua ngay </a>
+                            <span class="home-product-item__buy">Mua ngay </span>
                             <a class="home-product-item__detail" href="./detail-product.html">Xem chi tiết</a>
                         </div>
                     </div>
@@ -65,7 +69,7 @@ function renderProduct(data) {
                 <span class="home-product-item__feedback">(${product.feedback} đánh giá)</span>
             </div>
             <div class="home-product-item__button">
-                <a class="home-product-item__buy" href="./cart.html">Mua ngay </a>
+                <span class="home-product-item__buy">Mua ngay </span>
                 <a class="home-product-item__detail" href="./detail-product.html">Xem chi tiết</a>
             </div>
             </div>

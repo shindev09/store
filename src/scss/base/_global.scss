@@ -89,20 +89,32 @@
             margin: 10px 0;
 
             a {
-                text-decoration: none;
                 @include font(14px, bold);
-                color: $text-white;
-                padding: 10px 14px;
                 @include respond(desktop) {
                     padding: 8px;
                 }
+                text-decoration: none;
+                color: $text-white;
+                padding: 10px 14px;
+
                 &:hover {
                     opacity: 0.8;
                 }
             }
 
             .home-product-item__buy {
+                @include font(14px, bold);
+                @include respond(desktop) {
+                    padding: 8px;
+                }
                 background-color: $bg-primary;
+                text-decoration: none;
+                color: $text-white;
+                padding: 10px 14px;
+
+                &:hover {
+                    opacity: 0.8;
+                }
             }
 
             .home-product-item__detail {
