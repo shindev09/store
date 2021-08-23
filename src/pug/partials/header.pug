@@ -47,13 +47,8 @@ header
                             .navbar__menu
                                 +menu()
             a.header__menu__cart(href="./cart.html")
+                span.cart-quantity
                 label.navbar-cart(for='cart-toggle')
                     img(src="./assets/images/cart.png" alt="cart")
                 input#cart-toggle(type='checkbox')
                 .menu__cart
-                    +cart()
-                    .menu__cart__total
-                        .cart__total__content 
-                            span tổng tiền: 
-                            span 4.560.000 Đ
-                        button thanh toán

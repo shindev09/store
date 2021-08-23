@@ -6,8 +6,8 @@ const successToast = (message) => {
         gravity: "top",
         position: "right",
         stopOnFocus: true,
-        backgroundColor: "#51a351",
-    });
+        backgroundColor: "#32ff7e",
+    }).showToast();
 };
 
 const errorToast = (message) => {
@@ -18,6 +18,6 @@ const errorToast = (message) => {
         gravity: "top",
         position: "right",
         stopOnFocus: true,
-        backgroundColor: "#c72527",
-    });
+        backgroundcolor: "#ff4d4d",
+    }).showToast();
 };

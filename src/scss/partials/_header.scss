@@ -31,12 +31,12 @@
         .header__top__right {
             @include respond(mobile) {
                 width: 100%;
-                @include flex-center(center, center)
+                @include flex-center(center, center);
             }
 
             a {
-               @include font(12px, bold);
-               @include respond(mobile) {
+                @include font(12px, bold);
+                @include respond(mobile) {
                     border-right: none;
                     padding-left: 40px;
                 }
@@ -61,7 +61,7 @@
                     padding-right: 50px;
                 }
             }
-        }   
+        }
     }
 }
 
@@ -118,7 +118,7 @@
         width: 30%;
 
         input {
-            padding: 10px 20px; 
+            padding: 10px 20px;
             border-radius: 20px;
             border: 1px solid $text-gray;
             width: 100%;
@@ -210,7 +210,7 @@
                 @include respond(tablet) {
                     width: 100vw;
                 }
-                @include respond(desktop)  {
+                @include respond(desktop) {
                     font-size: 12px;
                     padding: 39px 30px;
                 }
@@ -250,7 +250,7 @@
                     display: none;
                     position: absolute;
                     background-color: $bg-top;
-                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
                     left: 15px;
                     width: calc(81vw + 3px);
                     padding: 20px;
@@ -277,7 +277,7 @@
 
                                 a {
                                     @include font(14px, 400);
-                                    text-decoration: none;  
+                                    text-decoration: none;
                                     text-transform: initial;
                                     color: $text-gray;
                                     padding: 8px 14px;
@@ -288,7 +288,7 @@
                                 }
                             }
                         }
-                        &:nth-child(2n+1) {
+                        &:nth-child(2n + 1) {
                             margin-top: 20px;
                         }
                     }
@@ -297,7 +297,7 @@
                         max-width: 100%;
                         height: 100%;
                     }
-                }  
+                }
 
                 .navbar__menu {
                     @include respond(mobile) {
@@ -314,7 +314,7 @@
                     position: absolute;
                     left: 0;
                     background-color: $bg-top;
-                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
                     width: 15vw;
                     z-index: 10;
                     .menu__title {
@@ -339,14 +339,14 @@
                             color: $text-black;
                             margin-left: 8px;
                             padding: 10px 0;
-                        }  
+                        }
 
                         &:hover .navbar__menu-drop {
                             display: block;
-                        }    
+                        }
                     }
 
-                    .navbar__menu-drop  {
+                    .navbar__menu-drop {
                         @include respond(mobile) {
                             position: static;
                             width: 50vw;
@@ -361,7 +361,7 @@
                         left: 100%;
                         top: 25%;
                         background-color: $bg-top;
-                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
                         width: 15vw;
                         display: none;
                         i {
@@ -405,14 +405,14 @@
                 border-right: 1px solid $text-gray;
             }
         }
-        
+
         @include respond(mobile) {
-            #menu-toggle:checked + .navbar__list  {
+            #menu-toggle:checked + .navbar__list {
                 display: flex;
             }
         }
         @include respond(tablet) {
-            #menu-toggle:checked + .navbar__list  {
+            #menu-toggle:checked + .navbar__list {
                 display: flex;
             }
         }
@@ -424,8 +424,8 @@
             @include respond(tablet) {
                 border-right: none;
             }
-            position: relative; 
-            border-left: 1px solid $text-gray; 
+            position: relative;
+            border-left: 1px solid $text-gray;
             border-right: 1px solid $text-gray;
             padding: 24px 30px;
             display: block;
@@ -437,8 +437,7 @@
                 display: block;
             }
 
-            &:before {
-                content: "0";
+            .cart-quantity {
                 position: absolute;
                 top: 35%;
                 right: 10%;
@@ -471,9 +470,11 @@
                 top: 100%;
                 right: 0;
                 background-color: $bg-top;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
                 width: 20vw;
                 cursor: default;
+                height: 300px;
+                overflow: scroll;
 
                 .menu__cart__item {
                     @include flex-center(flex-start, center);
@@ -485,9 +486,19 @@
                         background-color: $bg-white;
                     }
 
+                    .menu__cart__image {
+                        width: 65px;
+                        height: 65px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
                     .menu__cart__content {
                         margin-left: 10px;
                         position: relative;
+                        min-width: 160px;
 
                         h4 {
                             @include font(14px, bold);
@@ -563,7 +574,7 @@
                     display: none;
                 }
             }
-            
+
             @include respond(tablet) {
                 #cart-toggle:checked + .menu__cart {
                     display: none;

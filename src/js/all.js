@@ -4,6 +4,7 @@ let filter = { _page: 1, _limit: 5 };
 
 window.addEventListener("DOMContentLoaded", () => {
     getProductLimit(filter);
+    onLoadCart();
 });
 
 (function getAllProduct() {
@@ -11,10 +12,13 @@ window.addEventListener("DOMContentLoaded", () => {
         method: "GET",
         url: `${baseURL}/listProducts`,
         headers: { "Content-Type": "application/json" },
-        success: function (data, status, res) {
-            renderPagination(data, filter);
-            renderCategoryProduct(data);
+        success: function (data) {
+            handlePagination(data, filter);
+            handleCategoryProduct(data);
             handleRangePrice(data);
+            handleChangeAZ();
+            handleChangeLimit();
+            handleChangePrice();
             onLoadCart();
         },
     });
@@ -25,19 +29,20 @@ function getProductLimit(params) {
         type: "GET",
         url: `${baseURL}/listProducts`,
         data: params,
-        success: function (data, status, res) {
+        success: function (data) {
             renderProduct(data);
+            cartNum(data);
         },
         error: function (err) {
-            console.log(err);
+            console.log("error : ", err);
         },
     });
 }
 
-//--------- render product -------------------//
+//- render product -//
 
 function renderProduct(data) {
-    let product_list = data.map((product, index) => {
+    let product_list = data.map((product) => {
         return `
             <div class="col-lg-12 col-md-12 home-product-mobile">
                 <div class="home-product-item"><img class="img-fluid" src="${product.img}"/>
@@ -80,9 +85,9 @@ function renderProduct(data) {
     $("#productGrid").html(product_grid);
 }
 
-// ------------------ categories -----------------//
+//- categories -//
 
-function renderCategoryProduct(data) {
+function handleCategoryProduct(data) {
     let listcategory = new Set(
         data.map((item) => {
             return item.category;
@@ -104,8 +109,7 @@ function renderCategoryProduct(data) {
     });
 }
 
-//----filter range price --------//
-
+//- filter range price -//
 handleRangePrice = () => {
     let categoryLink = document.querySelectorAll(".category-price__item");
     categoryLink.forEach((item) => {
@@ -117,4 +121,63 @@ handleRangePrice = () => {
             getProductLimit(filter);
         };
     });
+};
+
+//- filter sort name product from A to Z -//
+handleChangeAZ = (value) => {
+    switch (value) {
+        case "asc":
+            filter = { ...filter, _sort: "title", _order: value };
+            getProductLimit(filter);
+            break;
+        case "desc":
+            filter = { ...filter, _sort: "title", _order: value };
+            getProductLimit(filter);
+            break;
+        case "default":
+            filter = { _page: 1, _limit: 5 };
+            getProductLimit(filter);
+            break;
+    }
+};
+
+//- filter show quantity product -//
+handleChangeLimit = (value) => {
+    switch (value) {
+        case "3":
+            filter = { ...filter, _limit: 3, _order: value };
+            getProductLimit(filter);
+            break;
+        case "6":
+            filter = { ...filter, _limit: 6, _order: value };
+            getProductLimit(filter);
+            break;
+        case "9":
+            filter = { ...filter, _limit: 9, _order: value };
+            getProductLimit(filter);
+            break;
+        case "default":
+            filter = { _page: 1, _limit: 5 };
+            getProductLimit(filter);
+            break;
+    }
+};
+
+//- filter show price incre/decre -//
+handleChangePrice = (value) => {
+    switch (value) {
+        case "asc":
+            filter = { ...filter, _sort: "price", _order: value };
+            getProductLimit(filter);
+            break;
+        case "desc":
+            filter = { ...filter, _sort: "price", _order: value };
+            getProductLimit(filter);
+            break;
+
+        case "default":
+            filter = { _page: 1, _limit: 5 };
+            getProductLimit(filter);
+            break;
+    }
 };

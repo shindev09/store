@@ -1,4 +1,4 @@
-function renderPagination(data, params) {
+function handlePagination(data, params) {
     let totalPages = parseInt(data.length / params._limit);
 
     let paginationList = "";
@@ -90,67 +90,6 @@ function renderPagination(data, params) {
         });
         if (value === totalPages) {
             btnPrev.value = value - 1;
-        }
-    };
-
-    //-- filter sort name product from A to Z -- //
-
-    handleChangeAZ = (value) => {
-        switch (value) {
-            case "asc":
-                filter = { ...filter, _sort: "title", _order: value };
-                getProductLimit(filter);
-                break;
-            case "desc":
-                filter = { ...filter, _sort: "title", _order: value };
-                getProductLimit(filter);
-                break;
-            case "default":
-                filter = { _page: 1, _limit: 5 };
-                getProductLimit(filter);
-                break;
-        }
-    };
-
-    //- filter show product -//
-    handleChangeLimit = (value) => {
-        switch (value) {
-            case "3":
-                filter = { ...filter, _limit: 3, _order: value };
-                console.log(filter);
-                getProductLimit(filter);
-                break;
-            case "6":
-                filter = { ...filter, _limit: 6, _order: value };
-                getProductLimit(filter);
-                break;
-            case "9":
-                filter = { ...filter, _limit: 9, _order: value };
-                getProductLimit(filter);
-                break;
-            case "default":
-                filter = { _page: 1, _limit: 5 };
-                getProductLimit(filter);
-                break;
-        }
-    };
-
-    //- filter show price incre/decre -//
-    handleChangePrice = (value) => {
-        switch (value) {
-            case "asc":
-                filter = { ...filter, _sort: "price", _order: value };
-                getProductLimit(filter);
-                break;
-            case "desc":
-                filter = { ...filter, _sort: "price", _order: value };
-                getProductLimit(filter);
-                break;
-
-            case "default":
-                filter = { _page: 1, _limit: 5 };
-                getProductLimit(filter);
-                break;
         }
     };
 }
