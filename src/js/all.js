@@ -4,6 +4,7 @@ let filter = { _page: 1, _limit: 5 };
 
 window.addEventListener("DOMContentLoaded", () => {
     getProductLimit(filter);
+    loadProductInCart();
     onLoadCart();
 });
 
@@ -19,7 +20,6 @@ window.addEventListener("DOMContentLoaded", () => {
             handleChangeAZ();
             handleChangeLimit();
             handleChangePrice();
-            onLoadCart();
         },
     });
 })();
@@ -31,7 +31,7 @@ function getProductLimit(params) {
         data: params,
         success: function (data) {
             renderProduct(data);
-            cartNum(data);
+            handlecart(data);
         },
         error: function (err) {
             console.log("error : ", err);
@@ -63,7 +63,7 @@ function renderProduct(data) {
             </div>`;
     });
 
-    let product_grid = data.map((product, index) => {
+    let product_grid = data.map((product) => {
         return `
         <div class="col-lg-4 col-md-6 home-product-mobile">
             <div class="home-product-item grid-product"><img class="img-fluid grid-product-img" src="${product.img}"/>

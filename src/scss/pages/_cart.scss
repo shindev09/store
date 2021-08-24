@@ -12,7 +12,7 @@
 
         .cart-container {
             margin-top: 4rem;
-            
+
             .cart-title__item {
                 @include font(14px, bold);
                 @include respond(mobile) {
@@ -21,39 +21,50 @@
                 text-transform: uppercase;
                 text-align: center;
             }
-    
+
             .cart-list {
                 text-transform: uppercase;
                 text-align: center;
             }
-    
+
             .cart-item {
-                @include respond (mobile) {
+                @include respond(mobile) {
                     line-height: 20px !important;
+                    img {
+                        width: 100% !important;
+                    }
                 }
-                @include respond (tablet) {
+                @include respond(tablet) {
                     line-height: 34px;
+                    img {
+                        width: 100% !important;
+                    }
                 }
-                line-height: 125px;
-    
+                text-align: center;
+                img {
+                    width: 40%;
+                }
+
                 span {
                     @include respond(mobile) {
                         font-size: 14px;
                     }
                 }
             }
-            
+
             .cart-item__title,
             .cart-item__total,
             .cart-item__price {
                 @include font(14px, bold);
             }
-    
+
             .cart-item__amount {
                 border: 1px solid $border;
                 padding: 8px;
+                width: 50px;
+                text-align: center;
             }
-    
+
             i {
                 color: $text-red;
                 cursor: pointer;
@@ -98,7 +109,7 @@
     }
 
     .cart-button {
-        @include flex-center(flex-end, center); 
+        @include flex-center(flex-end, center);
         margin-top: 20px;
 
         .cart-btn {

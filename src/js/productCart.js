@@ -1,5 +1,6 @@
 let numOfProduct = document.querySelector(".cart-quantity");
 
+//- load number of cart
 function onLoadCart() {
     let cartNum = localStorage.getItem("cartNums");
     if (numOfProduct) {
@@ -12,7 +13,8 @@ function onLoadCart() {
     }
 }
 
-function cartNum(product) {
+//- handle cart, add product, total price, load
+function handlecart(product) {
     let btnBuy = document.querySelectorAll(".home-product-item__buy");
     for (let i = 0; i < btnBuy.length; i++) {
         btnBuy[i].onclick = () => {
@@ -33,6 +35,7 @@ function cartNum(product) {
     }
 }
 
+//- add product to cart navbar
 function addProductToCart(product) {
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
@@ -53,6 +56,7 @@ function addProductToCart(product) {
     localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
 
+//- total price
 function totalPrice(product) {
     let cartPrice = localStorage.getItem("totalPrice");
     if (cartPrice) {
@@ -63,6 +67,7 @@ function totalPrice(product) {
     }
 }
 
+//- load product in cart
 function loadProductInCart() {
     let cartItem = localStorage.getItem("productsInCart");
     cartItem = JSON.parse(cartItem);
@@ -71,9 +76,8 @@ function loadProductInCart() {
     let elementTotalPrice = document.querySelector(".total");
     let layoutCart = "";
     let listCart = document.querySelector(".menu__cart");
+    let tableCartElement = document.querySelector(".cart-body__list");
     let productTableCart = "";
-    let tableCart = document.getElementsByClassName("cart-body__list");
-
     if (cartItem && Object.values(cartItem).length !== 0) {
         let allProduct = Object.values(cartItem);
         allProduct.map((item) => {
@@ -124,34 +128,104 @@ function loadProductInCart() {
                         <div class="modal fade mt-5 p-5 " id='modal${
                             item.id
                         }' tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog ">
-								<div class="modal-content mt-5">
-									<div class="modal-header">
-										<h2 class="modal-title text-danger" id="exampleModalLabel">Bạn muốn bỏ sản phẩm này ?</h2>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<p>${item.title}</p>
-									</div>
-									<div class="modal-footer py-4">
-										<button type="button" class="btn btn-no" data-bs-dismiss="modal">Không</button>
-										<button type="button" class="btn btn-yes" data-bs-dismiss="modal">Có</button>
-									</div>
-								</div>
-							</div>
-						</div>
+                            <div class="modal-dialog ">
+                                <div class="modal-content mt-5">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title text-danger" id="exampleModalLabel">Bạn muốn bỏ sản phẩm này ?</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>${item.title}</p>
+                                    </div>
+                                    <div class="modal-footer py-4">
+                                        <button type="button" class="btn btn-no" data-bs-dismiss="modal">Không</button>
+                                        <button type="button" class="btn btn-yes" data-bs-dismiss="modal">Có</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
-                </tr>
-            `;
+                </tr>`;
         });
+
         listCart
             ? (listCart.innerHTML = `
-            ${layoutCart}        
-            <div class="menu__cart__total">
-                <div class="cart__total__content"> <span>tổng tiền: </span><span>${totalPrice}</span></div>
-                <button>thanh toán</button>
-            </div>`)
+                    ${layoutCart}
+                    <div class="menu__cart__total">
+                    <div class="cart__total__content"> <span>tổng tiền: </span><span>${totalPrice}</span></div>
+                    <button>thanh toán</button>
+                    </div>`)
             : "";
-        tableCart ? (tableCart.innerHTML = productTableCart) : "";
+        tableCartElement ? (tableCartElement.innerHTML = productTableCart) : "";
+
+        //- handle incre/decre quantity product
+        let productAmount = document.querySelectorAll(".cart-item__amount");
+        let productTotal = document.querySelectorAll(".cart-item__total");
+
+        for (let i = 0; i < productAmount.length; i++) {
+            productAmount[i].addEventListener("change", () => {
+                if (productAmount[i].value > 0) {
+                    productTotal[i].innerHTML = `${
+                        parseInt(allProduct[i].price) *
+                        parseInt(productAmount[i].value)
+                    }`;
+                    productTotal[i].setAttribute(
+                        "data-price",
+                        parseInt(allProduct[i].price) *
+                            parseInt(productAmount[i].value)
+                    );
+                    allProduct[i].inCart = parseInt(productAmount[i].value);
+                    localStorage.setItem(
+                        "productsInCart",
+                        JSON.stringify(cartItem)
+                    );
+
+                    //- total price in cart
+                    let totalPrices = [];
+                    for (let i = 0; i < productTotal.length; i++) {
+                        totalPrices.push(
+                            parseInt(
+                                parseInt(
+                                    productTotal[i].getAttribute("data-price")
+                                )
+                            )
+                        );
+                    }
+
+                    let totalPriceChange = totalPrices.reduce(
+                        (acccumulator, curentValue) => {
+                            return acccumulator + curentValue;
+                        },
+                        0
+                    );
+
+                    elementTotalPrice.innerHTML = totalPriceChange;
+                    totalPrice = totalPrices.reduce(
+                        (acccumulator, curentValue) => {
+                            return acccumulator + curentValue;
+                        },
+                        0
+                    );
+
+                    localStorage.setItem("totalPrice", totalPrice);
+                } else if (productAmount[i].value == 0) {
+                    //-...
+                } else if (productAmount[i].value < 0) {
+                    productAmount[i].value = 1;
+                    errorToast("Số lượng sản phẩm không thể nhỏ hơn 0");
+                }
+            });
+        }
     }
 }
+
+//- handle remove product
+function handleRemoveProduct() {
+    let cartItem = JSON.parse(localStorage.getItem("productsInCart"));
+    let totalPrice = parseInt(localStorage.getItem("totalPrice"));
+    let cartNumber = localStorage.getItem("cartNumbers");
+
+    cartItem = Object.values(cartItem);
+    cartItem = { ...cartItem };
+}
+handleRemoveProduct();
