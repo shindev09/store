@@ -428,10 +428,9 @@
             border-left: 1px solid $text-gray;
             border-right: 1px solid $text-gray;
             padding: 24px 30px;
-            display: block;
-            text-decoration: none;
             color: $text-white;
             z-index: 10;
+            cursor: pointer;
 
             &:hover .menu__cart {
                 display: block;
@@ -476,11 +475,17 @@
                 height: 300px;
                 overflow: scroll;
 
+                .no-item-cart {
+                    @include font(16px, bold);
+                    text-align: center;
+                }
+
                 .menu__cart__item {
                     @include flex-center(flex-start, center);
                     padding: 20px;
                     border-bottom: 1px solid $text-gray;
                     cursor: pointer;
+                    position: relative;
 
                     &:hover {
                         background-color: $bg-white;
@@ -497,8 +502,8 @@
 
                     .menu__cart__content {
                         margin-left: 10px;
-                        position: relative;
                         min-width: 160px;
+                        text-decoration: none;
 
                         h4 {
                             @include font(14px, bold);
@@ -514,25 +519,24 @@
                                 }
                             }
                         }
-
-                        i {
-                            @include respond(tablet) {
-                                top: -20px;
-                                right: -50px;
-                            }
-                            @include respond(mobile) {
-                                top: -5px;
-                                right: -20px;
-                            }
-                            position: absolute;
-                            top: -2px;
-                            right: -10px;
-                            border-radius: 50%;
-                            border: 1px solid $text-gray;
-                            color: $text-gray;
-                            padding: 5px;
-                            font-size: 10px;
+                    }
+                    i {
+                        @include respond(tablet) {
+                            top: -20px;
+                            right: -50px;
                         }
+                        @include respond(mobile) {
+                            top: -5px;
+                            right: -20px;
+                        }
+                        position: absolute;
+                        top: 20px;
+                        right: 10px;
+                        border-radius: 50%;
+                        border: 1px solid $text-gray;
+                        color: $text-gray;
+                        padding: 5px;
+                        font-size: 10px;
                     }
                 }
 
@@ -553,15 +557,17 @@
                         }
                     }
 
-                    button {
+                    a {
                         @include font(14px, bold);
                         background-color: $bg-primary;
+                        text-decoration: none;
                         text-transform: uppercase;
                         padding: 10px 8px;
                         float: right;
                         margin: 10px 0 20px 0;
                         color: $text-white;
                         cursor: pointer;
+
                         &:hover {
                             opacity: 0.8;
                         }

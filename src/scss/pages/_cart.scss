@@ -27,6 +27,18 @@
                 text-align: center;
             }
 
+            .cart-body__list {
+                position: relative;
+
+                .no-item {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin-top: 20px;
+                }
+            }
+
             .cart-item {
                 @include respond(mobile) {
                     line-height: 20px !important;
@@ -98,7 +110,7 @@
         }
 
         .cart-total-content {
-            .total {
+            .total-pay {
                 @include respond(mobile) {
                     font-size: 16px;
                 }

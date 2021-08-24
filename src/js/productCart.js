@@ -2,7 +2,7 @@ let numOfProduct = document.querySelector(".cart-quantity");
 
 //- load number of cart
 function onLoadCart() {
-    let cartNum = localStorage.getItem("cartNums");
+    let cartNum = localStorage.getItem("cartNum");
     if (numOfProduct) {
         if (cartNum && cartNum > 0) {
             numOfProduct.textContent = cartNum;
@@ -73,28 +73,32 @@ function loadProductInCart() {
     cartItem = JSON.parse(cartItem);
     let totalPrice = localStorage.getItem("totalPrice");
     totalPrice = parseInt(totalPrice);
-    let elementTotalPrice = document.querySelector(".total");
+    let totalPay = document.querySelector(".total-pay");
+    let total = document.querySelector(".total");
+    let totalVAT = document.querySelector(".total-VAT");
+    totalVAT = 0.1;
     let layoutCart = "";
     let listCart = document.querySelector(".menu__cart");
     let tableCartElement = document.querySelector(".cart-body__list");
     let productTableCart = "";
+
     if (cartItem && Object.values(cartItem).length !== 0) {
         let allProduct = Object.values(cartItem);
         allProduct.map((item) => {
             layoutCart += `
                 <div class="menu__cart__item"> 
-                    <div class="menu__cart__image">
+                    <a href="./cart.html" class="menu__cart__image">
                         <img src="${item.img}" alt="cart-img">
-                    </div>
-                    <div class="menu__cart__content">
+                    </a>
+                    <a href="./cart.html" class="menu__cart__content">
                         <h4>${item.title}</h4>
                         <div class="cart__item"> 
                             <span>${item.inCart}</span>
                             <span>x</span>
                             <span>${item.price}</span>
                         </div>
-                        <i class="fas fa-times"></i>
-                    </div>
+                    </a>
+                    <i class="remove-product fas fa-times"></i>
                 </div>
             `;
             productTableCart += `
@@ -121,25 +125,28 @@ function loadProductInCart() {
                     </td>
                     <td class="cart-item">
                         <span 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#modal${item.id}">
+                            data-toggle="modal" 
+                            data-target="#modal${item.id}">
                             <i class="fas fa-times"></i>
                         </span>
                         <div class="modal fade mt-5 p-5 " id='modal${
                             item.id
                         }' tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog ">
+                            <div class="modal-dialog">
                                 <div class="modal-content mt-5">
                                     <div class="modal-header">
-                                        <h2 class="modal-title text-danger" id="exampleModalLabel">Bạn muốn bỏ sản phẩm này ?</h2>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>${item.title}</p>
+                                        <span id="exampleModalLabel">Bạn muốn bỏ sản phẩm <span class="modal-title text-danger">${
+                                            item.title
+                                        }</span> ?</span>
+                                        <div class="btn-close">
+                                            <button class="close" type='button' data-dismiss='modal' aria-label='Close'>
+                                                <span aria-hidden='true'>&times; </span>
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="modal-footer py-4">
-                                        <button type="button" class="btn btn-no" data-bs-dismiss="modal">Không</button>
-                                        <button type="button" class="btn btn-yes" data-bs-dismiss="modal">Có</button>
+                                        <button type="button" class="btn btn-no" data-dismiss="modal">Không</button>
+                                        <button type="button" class="btn btn-yes" data-dismiss="modal">Có</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +160,7 @@ function loadProductInCart() {
                     ${layoutCart}
                     <div class="menu__cart__total">
                     <div class="cart__total__content"> <span>tổng tiền: </span><span>${totalPrice}</span></div>
-                    <button>thanh toán</button>
+                    <a href="./cart.html">thanh toán</a>
                     </div>`)
             : "";
         tableCartElement ? (tableCartElement.innerHTML = productTableCart) : "";
@@ -198,15 +205,15 @@ function loadProductInCart() {
                         },
                         0
                     );
-
-                    elementTotalPrice.innerHTML = totalPriceChange;
+                    total.innerHTML = totalPriceChange;
+                    totalPays = totalPriceChange - totalPriceChange * totalVAT;
+                    totalPay.innerHTML = totalPays;
                     totalPrice = totalPrices.reduce(
                         (acccumulator, curentValue) => {
                             return acccumulator + curentValue;
                         },
                         0
                     );
-
                     localStorage.setItem("totalPrice", totalPrice);
                 } else if (productAmount[i].value == 0) {
                     //-...
@@ -216,16 +223,59 @@ function loadProductInCart() {
                 }
             });
         }
+
+        //- remove product in cart navbar
+        let removeProduct = document.querySelectorAll(".remove-product");
+
+        for (let i = 0; i < removeProduct.length; i++) {
+            removeProduct[i].onclick = () => {
+                handleRemoveProduct(i);
+            };
+        }
+
+        //- remove product in cart table
+        let btnRemove = document.querySelectorAll(".btn-yes");
+
+        for (let i = 0; i < btnRemove.length; i++) {
+            btnRemove[i].onclick = () => {
+                handleRemoveProduct(i);
+            };
+        }
+    } else {
+        tableCartElement
+            ? (tableCartElement.innerHTML = `<span class="no-item">Hiện tại không có sản phẩm nào !!!</span>`)
+            : "";
+
+        listCart
+            ? (listCart.innerHTML = `<img src="./assets/images/no-cart.png" alt="no-cart" class="no-item-cart">`)
+            : "";
     }
 }
 
 //- handle remove product
-function handleRemoveProduct() {
+function handleRemoveProduct(index) {
     let cartItem = JSON.parse(localStorage.getItem("productsInCart"));
     let totalPrice = parseInt(localStorage.getItem("totalPrice"));
-    let cartNumber = localStorage.getItem("cartNumbers");
+    let cartNumber = localStorage.getItem("cartNum");
 
     cartItem = Object.values(cartItem);
     cartItem = { ...cartItem };
+    totalPrice = totalPrice - cartItem[index].price * cartItem[index].inCart;
+    localStorage.setItem("totalPrice", totalPrice);
+
+    if (cartItem[index].inCart == 0) {
+        cartNumber = cartNumber - 1;
+    } else {
+        cartNumber = cartNumber - cartItem[index].inCart;
+    }
+    localStorage.setItem("cartNum", cartNumber);
+
+    delete cartItem[index];
+
+    cartItem = { ...cartItem };
+
+    localStorage.setItem("productsInCart", JSON.stringify(cartItem));
+
+    loadProductInCart();
+    onLoadCart();
 }
-handleRemoveProduct();

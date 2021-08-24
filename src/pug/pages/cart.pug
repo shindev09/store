@@ -9,7 +9,13 @@ block body
                     table.table.table-bordered.cart-container
                         thead
                             tr
-                                +titleCart
+                                th(class='cart-title__item' scope='col') stt
+                                th(class='cart-title__item' scope='col') sản phẩm
+                                th(class='cart-title__item' scope='col') thông tin
+                                th(class='cart-title__item' scope='col') đơn giá
+                                th(class='cart-title__item' scope='col') số lượng
+                                th(class='cart-title__item' scope='col') thành tiền
+                                th(class='cart-title__item' scope='col') xóa
                         tbody.cart-body__list
                 .cart-total-container.col-lg-12
                     .cart-total-title
@@ -18,8 +24,8 @@ block body
                         span thanh toán:
                     .cart-total-content
                         span.total
-                        span
-                        span.total
+                        span.total-VAT 10%
+                        span.total-pay
                 .cart-button.col-lg-12
                     .cart-btn.cart-continue tiếp tục mua hàng
                     .cart-btn.cart-pay thanh toán
