@@ -13,6 +13,11 @@
                         margin: 20px 0;
                     }
 
+                    .category-product__item.actived,
+                    .category-price__item.actived {
+                        background-color: $bg-menu;
+                    }
+
                     .category-item {
                         @include respond(mobile) {
                             &:nth-child(2) {

@@ -92,28 +92,28 @@ submitForm
 function handleValidate() {
     //- username
     if (username.value == "") {
-        username.style.borderColor = "#c72527";
+        username.style.borderColor = "#ff3838";
         spanName.style.display = "block";
-        spanName.style.color = "#c72527";
+        spanName.style.color = "#ff3838";
         spanName.innerHTML = "Tên không được bỏ trống!";
     }
     //- email
     else if (email.value == "") {
-        email.style.borderColor = "#c72527";
+        email.style.borderColor = "#ff3838";
         spanEmail.style.display = "block";
-        spanEmail.style.color = "#c72527";
+        spanEmail.style.color = "#ff3838";
         spanEmail.innerHTML = "Email không được bỏ trống!";
     }
     //- phone
     else if (phone.value == "") {
-        phone.style.borderColor = "#c72527";
+        phone.style.borderColor = "#ff3838";
         spanPhone.style.display = "block";
-        spanPhone.style.color = "#c72527";
+        spanPhone.style.color = "#ff3838";
         spanPhone.innerHTML = "Số điện thoại không được bỏ trống!";
     } else if (address.value == "") {
-        address.style.borderColor = "#c72527";
+        address.style.borderColor = "#ff3838";
         spanAddress.style.display = "block";
-        spanAddress.style.color = "#c72527";
+        spanAddress.style.color = "#ff3838";
         spanAddress.innerHTML = "Địa chỉ không được bỏ trống!";
     } else {
         formPayment.forEach((item) => {
@@ -151,9 +151,9 @@ function handleValidate() {
 if (username) {
     username.oninput = () => {
         if (isNaN(username.value)) {
-            username.style.borderColor = "#789629";
+            username.style.borderColor = "#32ff7e";
             spanName.style.display = "block";
-            spanName.style.color = "#789629";
+            spanName.style.color = "#32ff7e";
             spanName.innerHTML = "Tên hợp lệ";
         }
     };
@@ -161,14 +161,14 @@ if (username) {
 if (email) {
     email.oninput = () => {
         if (!regex.test(email.value) && email.value != "") {
-            email.style.borderColor = "#c72527";
+            email.style.borderColor = "#ff3838";
             spanEmail.style.display = "block";
-            spanEmail.style.color = "#c72527";
+            spanEmail.style.color = "#ff3838";
             spanEmail.innerHTML = "Email không hợp lệ!";
         } else {
-            email.style.borderColor = "#789629";
+            email.style.borderColor = "#32ff7e";
             spanEmail.style.display = "block";
-            spanEmail.style.color = "#789629";
+            spanEmail.style.color = "#32ff7e";
             spanEmail.innerHTML = "Hợp lệ";
         }
     };
@@ -177,23 +177,23 @@ if (email) {
 if (phone)
     phone.oninput = () => {
         if (phone.value.length < 10) {
-            phone.style.borderColor = "#c72527";
+            phone.style.borderColor = "#ff3838";
             spanPhone.style.display = "block";
-            spanPhone.style.color = "#c72527";
+            spanPhone.style.color = "#ff3838";
             spanPhone.innerHTML = "Số điện thoại không hợp lệ";
         } else {
-            phone.style.borderColor = "#789629";
+            phone.style.borderColor = "#32ff7e";
             spanPhone.style.display = "block";
-            spanPhone.style.color = "#789629";
+            spanPhone.style.color = "#32ff7e";
             spanPhone.innerHTML = "Số điện thoại hợp lệ";
         }
     };
 if (address)
     address.oninput = () => {
         if (phone.value) {
-            phone.style.borderColor = "#789629";
+            phone.style.borderColor = "#32ff7e";
             spanAddress.style.display = "block";
-            spanAddress.style.color = "#789629";
+            spanAddress.style.color = "#32ff7e";
             spanAddress.innerHTML = "Địa chỉ hợp lệ";
         }
     };

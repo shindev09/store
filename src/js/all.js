@@ -1,6 +1,7 @@
 const baseURL = "http://localhost:3000";
 
 let filter = { _page: 1, _limit: 5 };
+let filterProduct = {};
 
 window.addEventListener("DOMContentLoaded", () => {
     getProductLimit(filter);
@@ -118,10 +119,13 @@ function handleCategoryProduct(data) {
     $(".category-product__list").html(newCategories);
 
     let categoryLink = document.querySelectorAll(".category-product__item");
+
     categoryLink.forEach((item) => {
         item.onclick = () => {
             filter = { ...filter, category: item.innerText };
             getProductLimit(filter);
+            $(".category-product__item.actived").removeClass("actived");
+            item.classList.add("actived");
         };
     });
 }
@@ -136,6 +140,8 @@ handleRangePrice = () => {
                 price_lte: item.innerText,
             };
             getProductLimit(filter);
+            $(".category-price__item.actived").removeClass("actived");
+            item.classList.add("actived");
         };
     });
 };
@@ -196,5 +202,14 @@ handleChangePrice = (value) => {
             filter = { _page: 1, _limit: 5 };
             getProductLimit(filter);
             break;
+    }
+};
+
+//- filter product follow pagination
+handleProductPagination = (value) => {
+    if (filter._limit !== value) {
+        filter = { ...filter, _limit: value };
+        getAllProduct(filter);
+        getProductLimit(filterProduct);
     }
 };
