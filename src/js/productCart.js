@@ -41,15 +41,15 @@ function addProductToCart(product) {
     cartItems = JSON.parse(cartItems);
 
     if (cartItems) {
-        if (cartItems[`products ${product.id}`] == undefined) {
+        if (cartItems[`product ${product.id}`] == undefined) {
             cartItems = {
                 ...cartItems,
-                [`products ${product.id}`]: { ...product, inCart: 1 },
+                [`product ${product.id}`]: { ...product, inCart: 1 },
             };
-        } else cartItems[`products ${product.id}`].inCart += 1;
+        } else cartItems[`product ${product.id}`].inCart += 1;
     } else {
         cartItems = {
-            [`products ${product.id}`]: { ...product, inCart: 1 },
+            [`product ${product.id}`]: { ...product, inCart: 1 },
         };
     }
 
@@ -75,8 +75,7 @@ function loadProductInCart() {
     totalPrice = parseInt(totalPrice);
     let totalPay = document.querySelector(".total-pay");
     let total = document.querySelector(".total");
-    let totalVAT = document.querySelector(".total-VAT");
-    totalVAT = 0.1;
+    let totalVAT = 0.1;
     let layoutCart = "";
     let listCart = document.querySelector(".menu__cart");
     let tableCartElement = document.querySelector(".cart-body__list");
@@ -95,7 +94,9 @@ function loadProductInCart() {
                         <div class="cart__item"> 
                             <span>${item.inCart}</span>
                             <span>x</span>
-                            <span>${item.price}</span>
+                            <span>${item.price.toLocaleString(
+                                "vi-VN"
+                            )}<sup>Đ</sup></span>
                         </div>
                     </a>
                     <i class="remove-product fas fa-times"></i>
@@ -111,7 +112,9 @@ function loadProductInCart() {
                         <span class="cart-item__title">${item.title}</span>
                     </td>
                     <td class="cart-item">
-                        <span class="cart-item__price">${item.price}</span>
+                        <span class="cart-item__price">${item.price.toLocaleString(
+                            "vi-VN"
+                        )}<sup>Đ</sup></span>
                     </td>
                     <td class="cart-item">
                         <input type="number" min="0" value="${
@@ -121,7 +124,9 @@ function loadProductInCart() {
                     <td class="cart-item">
                         <span class="cart-item__total" data-price="${parseInt(
                             item.price * item.inCart
-                        )}">${parseInt(item.price * item.inCart)}</span>
+                        )}">${parseInt(item.price * item.inCart).toLocaleString(
+                "vi-VN"
+            )}<sup>Đ</sup></span>
                     </td>
                     <td class="cart-item">
                         <span 
@@ -159,7 +164,9 @@ function loadProductInCart() {
             ? (listCart.innerHTML = `
                     ${layoutCart}
                     <div class="menu__cart__total">
-                    <div class="cart__total__content"> <span>tổng tiền: </span><span>${totalPrice}</span></div>
+                    <div class="cart__total__content"> <span>tổng tiền: </span><span>${totalPrice.toLocaleString(
+                        "vi-VN"
+                    )}<sup>Đ</sup></span></div>
                     <a href="./cart.html">thanh toán</a>
                     </div>`)
             : "";
@@ -207,7 +214,9 @@ function loadProductInCart() {
                     );
                     total.innerHTML = totalPriceChange;
                     totalPays = totalPriceChange - totalPriceChange * totalVAT;
+
                     totalPay.innerHTML = totalPays;
+
                     totalPrice = totalPrices.reduce(
                         (acccumulator, curentValue) => {
                             return acccumulator + curentValue;
@@ -215,11 +224,9 @@ function loadProductInCart() {
                         0
                     );
                     localStorage.setItem("totalPrice", totalPrice);
-                } else if (productAmount[i].value == 0) {
-                    //-...
-                } else if (productAmount[i].value < 0) {
+                } else if (productAmount[i].value <= 0) {
                     productAmount[i].value = 1;
-                    errorToast("Số lượng sản phẩm không thể nhỏ hơn 0");
+                    errorToast("Số lượng sản phẩm không thể nhỏ hơn 1");
                 }
             });
         }
@@ -247,7 +254,16 @@ function loadProductInCart() {
             : "";
 
         listCart
-            ? (listCart.innerHTML = `<img src="./assets/images/no-cart.png" alt="no-cart" class="no-item-cart">`)
+            ? (listCart.innerHTML = `<span class="no-item-cart"><img src="./assets/images/no-cart.png" alt="no-cart" > <span class="no-item-span">Hiện tại không có sản phẩm nào !!!</span></span>`)
+            : "";
+    }
+
+    //- Button pay
+    let btnPay = document.querySelector(".cart-pay");
+    if (totalPrice == 0) {
+        btnPay
+            ? ((btnPay.style.backgroundColor = "#7f8c8d"),
+              (btnPay.style.pointerEvents = "none"))
             : "";
     }
 }
@@ -278,4 +294,25 @@ function handleRemoveProduct(index) {
 
     loadProductInCart();
     onLoadCart();
+    onLoadPrice();
+}
+
+//- load price
+function onLoadPrice() {
+    let totalPrice = localStorage.getItem("totalPrice");
+    let price = document.querySelector(".total");
+    let pricePay = document.querySelector(".total-pay");
+    let totalVAT = 0.1;
+    totalPays = totalPrice - totalPrice * totalVAT;
+    price
+        ? (price.innerHTML = ` ${
+              totalPrice > 0 ? parseInt(totalPrice).toLocaleString("vi-VN") : 0
+          }<sup>Đ</sup>`)
+        : "";
+
+    pricePay
+        ? (pricePay.innerHTML = `${
+              totalPays > 0 ? parseInt(totalPays).toLocaleString("vi-VN") : 0
+          }<sup>Đ</sup>`)
+        : "";
 }

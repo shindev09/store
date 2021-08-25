@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
     getProductLimit(filter);
     loadProductInCart();
     onLoadCart();
+    onLoadPrice();
 });
 
 (function getAllProduct() {
@@ -45,15 +46,25 @@ function renderProduct(data) {
     let product_list = data.map((product) => {
         return `
             <div class="col-lg-12 col-md-12 home-product-mobile">
-                <div class="home-product-item"><img class="img-fluid" src="${product.img}"/>
+                <div class="home-product-item"><img class="img-fluid" src="${
+                    product.img
+                }"/>
                     <div class="home-product-item__content">
-                        <h4 class="home-product-item__name">${product.title}</h4>
+                        <h4 class="home-product-item__name">${
+                            product.title
+                        }</h4>
                         <div class="home-product-item__rating">
-                            <div class="home-product-item__star">${product.rates}</div>
-                            <span class="home-product-item__feedback">(${product.feedback} đánh giá)</span>
+                            <div class="home-product-item__star">${
+                                product.rates
+                            }</div>
+                            <span class="home-product-item__feedback">(${
+                                product.feedback
+                            } đánh giá)</span>
                         </div>
                         <p>${product.decription}</p>
-                        <span class="home-product-item__price">${product.price}</span>
+                        <span class="home-product-item__price">${product.price.toLocaleString(
+                            "vi-VN"
+                        )}<sup>Đ</sup></span>
                         <div class="home-product-item__button">
                             <span class="home-product-item__buy">Mua ngay </span>
                             <a class="home-product-item__detail" href="./detail-product.html">Xem chi tiết</a>
@@ -66,12 +77,18 @@ function renderProduct(data) {
     let product_grid = data.map((product) => {
         return `
         <div class="col-lg-4 col-md-6 home-product-mobile">
-            <div class="home-product-item grid-product"><img class="img-fluid grid-product-img" src="${product.img}"/>
-            <span class="home-product-item__price">${product.price}</span>
+            <div class="home-product-item grid-product"><img class="img-fluid grid-product-img" src="${
+                product.img
+            }"/>
+            <span class="home-product-item__price">${product.price.toLocaleString(
+                "vi-VN"
+            )}<sup>Đ</sup></span>
             <h4 class="home-product-item__name">${product.title}</h4>
             <div class="home-product-item__rating">
                 <div class="home-product-item__star">${product.rates}</div>
-                <span class="home-product-item__feedback">(${product.feedback} đánh giá)</span>
+                <span class="home-product-item__feedback">(${
+                    product.feedback
+                } đánh giá)</span>
             </div>
             <div class="home-product-item__button">
                 <span class="home-product-item__buy">Mua ngay </span>

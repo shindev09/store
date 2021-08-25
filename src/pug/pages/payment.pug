@@ -1,0 +1,42 @@
+extends ../base/base.pug
+
+block body
+    .container-fluid
+        .row.justify-content-center
+            .col-11.col-sm-9.col-md-7.col-lg-6.col-xl-5.text-center.p-0.mt-3.mb-2
+                .card.px-0.pt-4.pb-0.mt-3.mb-3
+                    h2#heading Thanh toán
+                    form#msform.form-validate
+                        ul#progressbar
+                            li#cart.active
+                                strong Đơn hàng
+                            li#personal.active
+                                strong Thông tin cá nhân
+                        .progress
+                            .progress-bar.progress-bar-striped.progress-bar-animated(role='progressbar' aria-valuemin='0' aria-valuemax='100')
+                        br
+                        // fieldsets
+                        fieldset
+                            .form-card
+                                .row
+                                    .col-7
+                                        h2.fs-title Thông tin cá nhân:
+                                    .col-5
+                                        h2.steps Step 2 - 2
+                                .row
+                                    .col-lg-6
+                                        +inputForm("sign__form-label form-payment", "name", "Họ và tên :", "text")
+                                        <span class="validate-name"></span>
+                                    .col-lg-6
+                                        +inputForm("sign__form-label form-payment", "email", "Email :", "text")
+                                        <span class="validate-email"></span>
+                                    .col-lg-6
+                                        +inputForm("sign__form-label form-payment", "phone", "Số điện thoại :", "text")
+                                        <span class="validate-phone"></span>
+                                    .col-lg-6
+                                        +inputForm("sign__form-label form-payment", "address", "Địa chỉ :", "text")
+                                        <span class="validate-address"></span>
+                                .overview
+                                .overview-total
+                                input.next.action-button(type='submit' name='next' value='Thanh toán')
+                                a.previous.action-button-previous(href="./cart.html") Trở về
