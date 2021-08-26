@@ -198,11 +198,7 @@ function loadProductInCart() {
                     let totalPrices = [];
                     for (let i = 0; i < productTotal.length; i++) {
                         totalPrices.push(
-                            parseInt(
-                                parseInt(
-                                    productTotal[i].getAttribute("data-price")
-                                )
-                            )
+                            parseInt(productTotal[i].getAttribute("data-price"))
                         );
                     }
 

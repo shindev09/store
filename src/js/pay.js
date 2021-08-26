@@ -1,4 +1,3 @@
-//- Handle payment in data
 let products = localStorage.getItem("productsInCart");
 products = JSON.parse(products);
 let totalPrices = localStorage.getItem("totalPrice");
@@ -190,8 +189,8 @@ if (phone)
     };
 if (address)
     address.oninput = () => {
-        if (phone.value) {
-            phone.style.borderColor = "#32ff7e";
+        if (address.value) {
+            address.style.borderColor = "#32ff7e";
             spanAddress.style.display = "block";
             spanAddress.style.color = "#32ff7e";
             spanAddress.innerHTML = "Địa chỉ hợp lệ";
