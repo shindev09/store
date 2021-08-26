@@ -254,3 +254,17 @@
     color: $bg-primary !important;
     background-color: $bg-menu !important;
 }
+
+.btn-clear {
+    @include font(14px, bold);
+    padding: 6px 10px;
+    border: 1px solid $bg-primary;
+    cursor: pointer;
+    color: $bg-primary;
+    margin-left: 20px;
+
+    &:hover {
+        background-color: $bg-primary;
+        color: $text-white;
+    }
+}

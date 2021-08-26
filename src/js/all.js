@@ -1,14 +1,13 @@
 const baseURL = "http://localhost:3000";
 
-let filter = { _page: 1, _limit: 5 };
-let filterProduct = {};
-
 window.addEventListener("DOMContentLoaded", () => {
     getProductLimit(filter);
     loadProductInCart();
     onLoadCart();
     onLoadPrice();
 });
+
+let filter = { _page: 1, _limit: 5 };
 
 (function getAllProduct() {
     $.ajax({
@@ -18,10 +17,6 @@ window.addEventListener("DOMContentLoaded", () => {
         success: function (data) {
             handlePagination(data, filter);
             handleCategoryProduct(data);
-            handleRangePrice(data);
-            handleChangeAZ();
-            handleChangeLimit();
-            handleChangePrice();
         },
     });
 })();
@@ -168,15 +163,15 @@ handleChangeAZ = (value) => {
 handleChangeLimit = (value) => {
     switch (value) {
         case "3":
-            filter = { ...filter, _limit: 3, _order: value };
+            filter = { ...filter, _limit: value, _order: value };
             getProductLimit(filter);
             break;
         case "6":
-            filter = { ...filter, _limit: 6, _order: value };
+            filter = { ...filter, _limit: value, _order: value };
             getProductLimit(filter);
             break;
         case "9":
-            filter = { ...filter, _limit: 9, _order: value };
+            filter = { ...filter, _limit: value, _order: value };
             getProductLimit(filter);
             break;
         case "default":
@@ -205,11 +200,14 @@ handleChangePrice = (value) => {
     }
 };
 
-//- filter product follow pagination
-handleProductPagination = (value) => {
-    if (filter._limit !== value) {
-        filter = { ...filter, _limit: value };
-        getAllProduct(filter);
-        getProductLimit(filterProduct);
-    }
-};
+//- clear filter
+let btnClearFilter = document.querySelector(".btn-clear");
+
+btnClearFilter
+    ? (btnClearFilter.onclick = () => {
+          filter = { _page: 1, _limit: 5 };
+          getProductLimit(filter);
+          $(".category-product__item.actived").removeClass("actived");
+          $(".category-price__item.actived").removeClass("actived");
+      })
+    : "";

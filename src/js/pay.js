@@ -169,7 +169,7 @@ if (email) {
             email.style.borderColor = "#32ff7e";
             spanEmail.style.display = "block";
             spanEmail.style.color = "#32ff7e";
-            spanEmail.innerHTML = "Hợp lệ";
+            spanEmail.innerHTML = "Email hợp lệ";
         }
     };
 }

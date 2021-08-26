@@ -35,7 +35,7 @@ function handlecart(product) {
     }
 }
 
-//- add product to cart navbar
+//- add product localStorage
 function addProductToCart(product) {
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
@@ -56,7 +56,7 @@ function addProductToCart(product) {
     localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
 
-//- total price
+//- total price localStorage
 function totalPrice(product) {
     let cartPrice = localStorage.getItem("totalPrice");
     if (cartPrice) {
@@ -179,10 +179,10 @@ function loadProductInCart() {
         for (let i = 0; i < productAmount.length; i++) {
             productAmount[i].addEventListener("change", () => {
                 if (productAmount[i].value > 0) {
-                    productTotal[i].innerHTML = `${
+                    productTotal[i].innerHTML = `${(
                         parseInt(allProduct[i].price) *
                         parseInt(productAmount[i].value)
-                    }`;
+                    ).toLocaleString("vi-VN")}<sup>Đ</sup>`;
                     productTotal[i].setAttribute(
                         "data-price",
                         parseInt(allProduct[i].price) *
@@ -212,10 +212,14 @@ function loadProductInCart() {
                         },
                         0
                     );
-                    total.innerHTML = totalPriceChange;
+                    total.innerHTML = `${totalPriceChange.toLocaleString(
+                        "vi-VN"
+                    )}<sup>Đ</sup>`;
                     totalPays = totalPriceChange - totalPriceChange * totalVAT;
 
-                    totalPay.innerHTML = totalPays;
+                    totalPay.innerHTML = `${totalPays.toLocaleString(
+                        "vi-VN"
+                    )}<sup>Đ</sup>`;
 
                     totalPrice = totalPrices.reduce(
                         (acccumulator, curentValue) => {
@@ -273,7 +277,6 @@ function handleRemoveProduct(index) {
     let cartItem = JSON.parse(localStorage.getItem("productsInCart"));
     let totalPrice = parseInt(localStorage.getItem("totalPrice"));
     let cartNumber = localStorage.getItem("cartNum");
-
     cartItem = Object.values(cartItem);
     cartItem = { ...cartItem };
     totalPrice = totalPrice - cartItem[index].price * cartItem[index].inCart;
